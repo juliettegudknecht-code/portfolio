@@ -214,12 +214,75 @@ section { padding: 92px 0 0; }
   display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 22px 60px;
   align-items: start; border-top: 1px solid var(--pink-soft); padding-top: 34px;
 }
-.sec-label { margin: 0; font-family: var(--hand); font-size: 19px; font-weight: 700; letter-spacing: -0.01em; position: sticky; top: 96px; display: flex; align-items: center; gap: 10px; }
+.sec-label { margin: 0; font-family: var(--hand); font-size: 19px; font-weight: 700; letter-spacing: -0.01em; position: sticky; top: 96px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .sec-label .doodle { width: 22px; height: 22px; }
 .c-berry { color: #b34576; }
 .c-violet { color: #7a5fc0; }
 .c-blue { color: #3f7ab0; }
 .c-amber { color: #b0761f; }
+.sec-label .rail-spot { position: absolute; top: calc(100% + 30px); left: 2px; height: auto; flex: none; }
+.sec-label .rs-about { width: 44px; transform: rotate(-6deg); }
+.sec-label .rs-journey { width: 60px; transform: rotate(5deg); }
+.sec-label .rs-skills { width: 52px; transform: rotate(-5deg); }
+.sec-label .rs-projects { width: 50px; transform: rotate(4deg); }
+.sec-label .rs-education { width: 56px; transform: rotate(-3deg); }
+.sec-label .rs-speaking { width: 52px; transform: rotate(6deg); }
+.rk-exhaust { stroke-dasharray: 3 4; animation: rocketPuff 1.6s linear infinite; }
+@keyframes rocketPuff { to { stroke-dashoffset: -14; } }
+.stat-doodle { float: right; width: 20px; height: 20px; margin: 5px 0 0 10px; transform: rotate(7deg); }
+.stat:nth-child(2) .stat-doodle { transform: rotate(-6deg); }
+.stat:nth-child(4) .stat-doodle { transform: rotate(-8deg); }
+.foot-smile { width: 16px; height: 16px; vertical-align: -3px; margin-left: 5px; color: var(--pink); }
+.role-doodle { width: 19px; height: 19px; vertical-align: -3px; margin-right: 8px; display: inline-block; }
+.role-inf { width: 27px; height: 15px; vertical-align: -1px; margin-right: 7px; display: inline-block; }
+.job:nth-child(odd) .role-doodle { transform: rotate(-5deg); }
+.job:nth-child(even) .role-doodle { transform: rotate(4deg); }
+.project:nth-child(odd) .role-doodle { transform: rotate(4deg); }
+.project:nth-child(even) .role-doodle { transform: rotate(-5deg); }
+.role-doodle { transition: transform 0.2s ease; }
+.job:hover .role-doodle, .project:hover .role-doodle { transform: rotate(0deg) scale(1.18); }
+
+/* Project folder */
+.folder { margin-top: 6px; }
+.folder-tabs { display: none; flex-wrap: wrap; gap: 6px; padding: 0 16px; position: relative; z-index: 2; }
+html.js .folder-tabs { display: flex; }
+.ftab {
+  font-family: var(--hand); font-weight: 600; font-size: 14.5px;
+  padding: 9px 16px 12px; border: 2px solid #cfc9bb; border-bottom: none;
+  background: #f4f1ea; color: var(--muted); cursor: pointer;
+  margin-bottom: -2px; position: relative; transform: translateY(4px);
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  touch-action: manipulation;
+}
+.folder-tabs .ftab:nth-child(1) { border-radius: 12px 7px 0 0; }
+.folder-tabs .ftab:nth-child(2) { border-radius: 8px 12px 0 0; }
+.folder-tabs .ftab:nth-child(3) { border-radius: 10px 9px 0 0; }
+.folder-tabs .ftab:nth-child(4) { border-radius: 7px 11px 0 0; }
+.ftab:hover { transform: translateY(2px); }
+.ftab[aria-selected="true"] {
+  background: #fdfaf3; border-color: #b9b3a6; transform: translateY(0);
+  z-index: 3; padding-bottom: 14px;
+}
+.ftab[aria-selected="true"]::after {
+  content: ""; position: absolute; left: 2px; right: 2px; bottom: -3px; height: 5px; background: #fdfaf3;
+}
+.ft-berry[aria-selected="true"] { color: #8c2f56; }
+.ft-violet[aria-selected="true"] { color: #5b3fa8; }
+.ft-blue[aria-selected="true"] { color: #2f5f94; }
+.ft-amber[aria-selected="true"] { color: #8a5c14; }
+.folder-body {
+  position: relative; border: 2px solid #b9b3a6; border-radius: 2px 12px 12px 12px;
+  background: #fdfaf3; padding: 4px 28px 12px; z-index: 1;
+}
+.paperclip { position: absolute; top: -13px; right: 34px; width: 22px; height: auto; transform: rotate(9deg); z-index: 4; }
+.fpanel { position: relative; }
+.fpanel .project:first-child { padding-top: 16px; }
+.space-dust { position: absolute; top: 12px; right: 6px; width: 92px; height: auto; opacity: 0.55; pointer-events: none; }
+
+/* UX polish */
+a, button, summary { touch-action: manipulation; }
+.stat b, .job .years { font-variant-numeric: tabular-nums; }
+nav.site a.active { color: var(--ink); text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 2px; text-decoration-color: var(--pink); }
 .sec-body { min-width: 0; }
 .section-note { margin: 0 0 26px; font-size: 15.5px; color: var(--muted); max-width: 620px; }
 
@@ -391,6 +454,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
 [data-a11y~="captions"] .a11y-cap { display: block; margin-top: 6px; font-size: 12px; line-height: 1.45; color: var(--faint); }
 
 @media (max-width: 960px) {
+  .rail-spot { display: none; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-photo { max-width: 420px; }
   .sec-grid { grid-template-columns: 1fr; gap: 18px; }
@@ -414,6 +478,11 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
   .job, .skills .row { grid-template-columns: 1fr; }
   .job .years { padding-top: 0; font-size: 14px; }
   .talks { grid-template-columns: 1fr; gap: 30px; }
+  .folder-body { padding: 4px 18px 10px; }
+  .folder-tabs { gap: 3px; padding: 0 6px; row-gap: 6px; }
+  .ftab { font-size: 12.5px; padding: 6px 8px 9px; }
+  .ftab[aria-selected="true"] { padding-bottom: 12px; }
+  .space-dust { display: none; }
   .contact { padding-bottom: 72px; }
 }
 </style>
@@ -471,6 +540,83 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
       <path d="M12.1 3.2 C13.4 3.2 14.4 4.2 14.4 5.4 C14.4 6.7 13.4 7.7 12.1 7.7 C10.8 7.7 9.8 6.7 9.8 5.4 C9.8 4.2 10.8 3.2 12.1 3.2 Z" fill="none" stroke="currentColor" stroke-width="1.9"></path>
       <path d="M4.6 9.9 C9.5 11 14.6 11 19.5 9.8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"></path>
       <path d="M12 10.8 L12.1 14.7 L8.9 20.6 M12.1 14.7 L15.4 20.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+    <g id="d-heart">
+      <path d="M12 19.5 C7 15.4 4.9 12.4 5.7 9.7 C6.4 7.5 9.2 6.8 10.7 8.3 L12 9.6 L13.3 8.3 C14.8 6.8 17.6 7.5 18.3 9.7 C19.1 12.4 17 15.4 12 19.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+    <g id="d-bulb">
+      <path d="M12 3.4 C8.3 3.5 6.1 6.3 6.5 9.3 C6.8 11.3 8.1 12.4 8.9 13.9 C9.4 14.8 9.5 15.6 9.6 16.4 L14.4 16.3 C14.4 15.5 14.6 14.7 15.1 13.8 C15.9 12.3 17.3 11.2 17.5 9.1 C17.8 6.1 15.5 3.3 12 3.4 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M10.4 19 L13.7 18.9 M10.9 21 L13.2 20.9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+      <path d="M10.6 16.3 L11 12.6 L13 12.5 L13.4 16.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+    <g id="d-books">
+      <path d="M5 17.6 L19 17.4 L19.1 20.4 L5.1 20.6 Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M6.6 14.5 L20 14.3 L20.1 17.3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M6.6 14.5 L6.5 17.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"></path>
+      <path d="M5.9 10.9 L18.3 11.5 L18.1 14.3 L5.7 13.7 Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M15.5 11.3 L15.7 8.7 L17.3 8.8 L17.1 11.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+    <g id="d-mic">
+      <path d="M12 3.3 C10.2 3.3 9 4.7 9 6.7 L9.1 10.3 C9.1 12.3 10.4 13.7 12.1 13.7 C13.8 13.7 15 12.2 15 10.2 L14.9 6.7 C14.9 4.7 13.7 3.3 12 3.3 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M6.9 10.7 C7.2 14 9.3 16.1 12.1 16.1 C14.9 16.1 17 13.8 17.1 10.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      <path d="M12.1 16.3 L12 19.4 M9.4 20.5 L14.8 20.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </g>
+    <g id="d-globe">
+      <path d="M12 3.5 C7.3 3.6 3.7 7.3 3.8 12.1 C3.9 16.8 7.6 20.4 12.2 20.3 C16.9 20.2 20.4 16.4 20.3 11.8 C20.2 7.1 16.6 3.4 12 3.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      <path d="M12 3.7 C8.9 8.1 8.9 15.9 12.1 20.1 M12 3.7 C15.1 8.1 15.2 15.9 12.1 20.1 M4.2 12.2 L19.9 11.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+    </g>
+    <g id="d-apple">
+      <path d="M12 7.8 C10.2 6.1 7 6.5 5.9 9.1 C4.7 12.1 6.5 16.6 8.8 18.5 C9.9 19.4 11 19.3 12 18.7 C13 19.3 14.1 19.4 15.2 18.5 C17.5 16.6 19.3 12.1 18.1 9.1 C17 6.5 13.8 6.1 12 7.8 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M12 7.6 C12 5.9 12.7 4.7 14 3.9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+    </g>
+    <g id="d-flag">
+      <path d="M6.5 3.8 L6.8 20.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      <path d="M6.8 4.8 C10.1 3.6 13.1 6 16.9 4.6 L17.1 11.6 C13.2 13 10.2 10.6 6.9 11.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+    <g id="d-star">
+      <path d="M12 3.8 L13.9 8.9 L19.3 9.1 L15 12.5 L16.6 17.8 L12.1 14.7 L7.7 17.9 L9.2 12.6 L4.8 9.3 L10.2 9 Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+    <g id="d-pulse">
+      <path d="M3.8 12.4 L8 12.3 L10 8.2 L13 16.2 L15 12.2 L20.2 12.1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+    <g id="d-planet">
+      <path d="M12 6.6 C9 6.7 6.7 9.1 6.8 12.1 C6.9 15 9.2 17.3 12.1 17.2 C15 17.1 17.3 14.7 17.2 11.8 C17.1 8.9 14.9 6.5 12 6.6 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      <path d="M4 14.4 C8.2 16.9 16.6 15.4 20.3 10.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+      <path d="M4 14.4 C3.3 13.1 4.3 11.7 6.2 10.9 M20.3 10.5 C21 9.3 20.2 8.3 18.6 8.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+    </g>
+    <g id="d-scope">
+      <path d="M4.9 13.9 L15.6 6.2 C16.6 5.5 17.9 5.7 18.6 6.7 C19.3 7.7 19.1 9 18.1 9.7 L7.4 17.4 C6.7 17.9 5.9 17.8 5.4 17.1 L4.6 15.9 C4.2 15.3 4.3 14.4 4.9 13.9 Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M10.8 17.9 L9 21.2 M13.6 16 L15.9 20.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+    </g>
+    <g id="d-bubble">
+      <path d="M5 6.9 C5 5.5 6.1 4.5 7.5 4.5 L16.6 4.4 C18 4.4 19.1 5.4 19.1 6.8 L19.2 12.4 C19.2 13.8 18.1 14.8 16.7 14.8 L11.6 14.9 L7.9 18.6 L8.1 14.9 C6.4 15 5.1 13.9 5.1 12.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M8.6 9.8 L15.6 9.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+    </g>
+    <g id="d-snake">
+      <path d="M18.4 6.4 C16.7 4.5 13.3 4.4 11.6 6.2 C9.9 8 10.4 10.4 12.4 11.5 C14.5 12.7 14.9 14.9 13.3 16.4 C11.5 18 8.5 17.8 6.9 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      <path d="M18.4 6.4 C19.3 6.9 19.8 6.3 19.5 5.4 C19.3 4.7 18.4 4.5 17.8 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+      <path d="M19.7 5.2 L21.3 4.5 M21.3 4.5 L20.8 5.7 M21.3 4.5 L20.3 3.9" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+    </g>
+    <g id="d-capitol">
+      <path d="M5 19.8 L19 19.6 M6.3 17.7 L17.9 17.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"></path>
+      <path d="M8 17.5 C7.6 12.7 9.4 9.7 12 9.7 C14.6 9.7 16.4 12.6 16.1 17.4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"></path>
+      <path d="M9.7 10 L14.4 9.9 M12 9.5 L12 6.9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+      <circle cx="12" cy="6" r="0.9" fill="currentColor"></circle>
+    </g>
+    <g id="d-chart">
+      <path d="M5.5 4.8 C5.4 9.5 5.6 14.2 5.7 18.9 C10.3 18.9 15 18.6 19.6 18.7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"></path>
+      <path d="M9 18.7 L9 14.4 M12.7 18.6 L12.7 10.9 M16.4 18.6 L16.4 7.4" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"></path>
+    </g>
+    <g id="d-rocket">
+      <path d="M10.6 16.4 C8.6 12.6 9 7.2 12.2 3.6 C15.4 7.3 15.6 12.7 13.5 16.4 Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+      <circle cx="12.1" cy="8.6" r="1.6" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+      <path d="M10.5 15.9 C9 16.3 8.1 17.5 7.9 19 C9.3 18.7 10.4 18.2 11.2 17.4 M13.6 15.9 C15.1 16.3 16 17.5 16.2 19 C14.8 18.7 13.7 18.2 12.9 17.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M12.1 17.8 L12 20.9" stroke-dasharray="2.5 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+    </g>
+    <g id="d-smile">
+      <path d="M12 3.5 C7.2 3.6 3.6 7.3 3.7 12.1 C3.8 16.8 7.5 20.5 12.2 20.4 C16.9 20.3 20.5 16.5 20.4 11.8 C20.3 7.1 16.7 3.4 12 3.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      <path d="M8.9 9.7 L8.9 10.8 M15.1 9.6 L15.1 10.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      <path d="M8.2 13.9 C9.4 16.1 14.7 16.2 15.9 13.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
     </g>
   </defs>
 </svg>
@@ -579,17 +725,17 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
         </figure>
       </div>
       <div class="stats reveal" role="list" aria-label="At a glance">
-        <div class="stat" role="listitem"><b>46</b><span>citations</span></div>
-        <div class="stat" role="listitem"><b>10</b><span>publications</span></div>
-        <div class="stat" role="listitem"><b>1,200</b><span>keynote reach</span></div>
-        <div class="stat" role="listitem"><b>8M+</b><span>students with disabilities affected</span></div>
+        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-papers"></use></svg><b>46</b><span>citations</span></div>
+        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pencil"></use></svg><b>10</b><span>publications</span></div>
+        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-mega"></use></svg><b>1,200</b><span>keynote reach</span></div>
+        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-heart"></use></svg><b>8M+</b><span>students with disabilities affected</span></div>
       </div>
     </div>
   </div>
 
   <section id="about" class="research reveal">
     <div class="wrap sec-grid">
-      <h2 class="sec-label"><svg class="doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-glass"></use></svg>About</h2>
+      <h2 class="sec-label"><svg class="doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-glass"></use></svg>About<svg class="doodle rail-spot rs-about c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-heart"></use></svg></h2>
       <div class="sec-body">
       <h3>Data, research, and a <mark>passion for disability rights</mark>.</h3>
       <p>I'm a published autism researcher. My work in journals like <em>Autism</em> and <em>Exceptional Children</em> looks at how we write about autistic people and how their education goals get set.</p>
@@ -601,18 +747,23 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
 
   <section id="work" class="reveal">
     <div class="wrap sec-grid">
-      <h2 class="sec-label"><svg class="doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-path"></use></svg>Career journey</h2>
+      <h2 class="sec-label"><svg class="doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-path"></use></svg>Career journey<svg class="rail-spot rs-journey" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M10.6 16.4 C8.6 12.6 9 7.2 12.2 3.6 C15.4 7.3 15.6 12.7 13.5 16.4 Z" fill="none" stroke="#3f7ab0" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+        <circle cx="12.1" cy="8.6" r="1.6" fill="none" stroke="#3f7ab0" stroke-width="1.6"></circle>
+        <path d="M10.5 15.9 C9 16.3 8.1 17.5 7.9 19 C9.3 18.7 10.4 18.2 11.2 17.4 M13.6 15.9 C15.1 16.3 16 17.5 16.2 19 C14.8 18.7 13.7 18.2 12.9 17.4" fill="none" stroke="#3f7ab0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path class="rk-exhaust" d="M12.1 17.6 L12 22.4" fill="none" stroke="#b0761f" stroke-width="1.9" stroke-linecap="round"></path>
+      </svg></h2>
       <div class="sec-body">
 
       <div class="job">
         <div class="years">2024 to now<br><span class="current">current role</span></div>
         <div>
-          <h3>Data Analyst (Education Program Specialist)</h3>
+          <h3><svg class="doodle role-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-apple"></use></svg>Data Analyst (Education Program Specialist)</h3>
           <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
           <p class="desc">I serve as the data steward and subject-matter expert for Individuals with Disabilities Education Act (IDEA) Section 618 reporting: the federal data that every U.S. state submits each year on the infants, children, and students it serves in special education. My work spans six national data collections that shape how the country understands and funds services for students with disabilities. (Views my own, not my employer's.)</p>
           <ul>
             <li>Run the <strong>IDEA Discipline (2023&ndash;24, 2024&ndash;25) and Personnel (2024&ndash;25) collections</strong> and their static tables. In plain terms: the Discipline data tracks how often students with disabilities are suspended, expelled, or removed from class, and the Personnel data counts the special-education teachers and staff who serve them. Together they show how students with disabilities are served nationwide.</li>
-            <li>The collections I work on affect <strong>8M+ students with disabilities</strong>: I assist regularly on the Assessment collection (state-test performance) and on Maintenance of Effort and Coordinated Early Intervening Services (MOE/CEIS), and have previously assisted with the Exiting, Child Count, and Educational Environments collections.</li>
+            <li>The collections I work on affect <strong>8M+ students with disabilities</strong>, counting infants and toddlers served under IDEA Part C alongside the school-age students under Part B: I assist regularly on the Assessment collection (state-test performance) and on Maintenance of Effort and Coordinated Early Intervening Services (MOE/CEIS), and have previously assisted with the Exiting, Child Count, and Educational Environments collections.</li>
             <li>Co-authored the <strong>four most recent OSEP Fast Facts releases</strong>, turning IDEA Section 618 data into accessible, Section 508-compliant data stories for the public.</li>
           </ul>
           <details>
@@ -632,7 +783,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
       <div class="job">
         <div class="years">2021 to now</div>
         <div>
-          <h3>Founder &amp; CEO</h3>
+          <h3><svg class="role-inf" viewBox="0 0 100 52" aria-hidden="true" focusable="false"><path d="M50 26.5 C49.5 7 21 5.5 20.3 25.6 C19.6 45.5 49.5 46.5 50 26.5 C50.5 6.5 79.8 6 80 25.9 C80.2 46.5 50.5 46 50 26.5 Z" fill="none" stroke="url(#ndg)" stroke-width="10" stroke-linecap="round"></path></svg>Founder &amp; CEO</h3>
           <div class="org">Autism &amp; Neurodivergency Advocacy Association</div>
           <p class="desc">Founder and Chief Executive Officer of a 501(c)(3) nonprofit advancing neurodiversity through research, education, and international partnerships. Produced a Neurodiversity Awareness Day with Columbia University that drew more than 300 attendees.</p>
         </div>
@@ -641,7 +792,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
       <div class="job">
         <div class="years">2021 to 2024</div>
         <div>
-          <h3>Graduate Research Fellow</h3>
+          <h3><svg class="doodle role-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-cap"></use></svg>Graduate Research Fellow</h3>
           <div class="org">Teachers College, Columbia University</div>
           <p class="desc">Conducted quantitative and qualitative research on autism and special education, co-authoring peer-reviewed studies published in <em>Autism</em> and <em>Exceptional Children</em>.</p>
         </div>
@@ -650,7 +801,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
       <div class="job">
         <div class="years">2023 to 2025</div>
         <div>
-          <h3>Inclusive Education Co-Chair</h3>
+          <h3><svg class="doodle role-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-globe"></use></svg>Inclusive Education Co-Chair</h3>
           <div class="org">UNESCO · Sustainable Development Goal 4 Youth &amp; Student Network</div>
           <p class="desc">Selected from more than 1,500 applicants to represent youth in global education policy. Authored policy briefs and led trainings on disability inclusion at international forums.</p>
         </div>
@@ -659,7 +810,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
       <div class="job">
         <div class="years">2023 to 2024</div>
         <div>
-          <h3>International Disability Rights Intern</h3>
+          <h3><svg class="doodle role-doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-flag"></use></svg>International Disability Rights Intern</h3>
           <div class="org">U.S. Department of State</div>
           <p class="desc">Supported the Office of International Disability Rights on a narrative-change initiative advancing the human rights of people with disabilities, coordinating across public affairs and diplomatic channels.</p>
         </div>
@@ -668,7 +819,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
       <div class="job">
         <div class="years">2022</div>
         <div>
-          <h3>Data Science / Analytics Intern</h3>
+          <h3><svg class="doodle role-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-rocket"></use></svg>Data Science / Analytics Intern</h3>
           <div class="org">NASA · Goddard Space Flight Center</div>
           <p class="desc">Applied random-forest and ARIMA (time-series) models to exoplanet and social-media analytics, and built dashboards that the Hubble Space Telescope team continues to use.</p>
         </div>
@@ -677,7 +828,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
       <div class="job">
         <div class="years">2021</div>
         <div>
-          <h3>Data Science Intern</h3>
+          <h3><svg class="doodle role-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pulse"></use></svg>Data Science Intern</h3>
           <div class="org">Geisinger</div>
           <p class="desc">Built regression models across 90,000 patient records to study autism and co-occurring genetic disorders, and produced COVID-19 forecasting to support operational planning.</p>
         </div>
@@ -686,7 +837,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
       <div class="job">
         <div class="years">2019 to 2020</div>
         <div>
-          <h3>Computational Astrophysics Researcher</h3>
+          <h3><svg class="doodle role-doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-star"></use></svg>Computational Astrophysics Researcher</h3>
           <div class="org">NASA Kepler · Bloomsburg University</div>
           <p class="desc">Led an independent study of NASA Kepler Space Telescope time-series data using Fourier analysis, presenting findings at four academic conferences.</p>
         </div>
@@ -698,7 +849,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
 
   <section id="skills" class="skills reveal">
     <div class="wrap sec-grid">
-      <h2 class="sec-label"><svg class="doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pencil"></use></svg>Skills</h2>
+      <h2 class="sec-label"><svg class="doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pencil"></use></svg>Skills<svg class="doodle rail-spot rs-skills c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-bulb"></use></svg></h2>
       <div class="sec-body">
       <dl>
         <div class="row">
@@ -734,100 +885,128 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
 
   <section id="projects" class="reveal">
     <div class="wrap sec-grid">
-      <h2 class="sec-label"><svg class="doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-folder"></use></svg>Selected work</h2>
+      <h2 class="sec-label"><svg class="doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-folder"></use></svg>Selected work<svg class="doodle rail-spot rs-projects c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-planet"></use></svg></h2>
       <div class="sec-body">
-
-      <div class="project">
-        <h3>IDEA Section 618 Data Collections</h3>
+        <div class="folder">
+          <div class="folder-tabs" role="tablist" aria-label="Project folders">
+            <button type="button" class="ftab ft-berry" role="tab" id="tab-fed" aria-selected="true" aria-controls="panel-fed">Federal data</button>
+            <button type="button" class="ftab ft-violet" role="tab" id="tab-res" aria-selected="false" aria-controls="panel-res" tabindex="-1">Research</button>
+            <button type="button" class="ftab ft-blue" role="tab" id="tab-space" aria-selected="false" aria-controls="panel-space" tabindex="-1">Space</button>
+            <button type="button" class="ftab ft-amber" role="tab" id="tab-etc" aria-selected="false" aria-controls="panel-etc" tabindex="-1">Advocacy</button>
+          </div>
+          <div class="folder-body">
+            <svg class="paperclip" viewBox="0 0 24 34" aria-hidden="true" focusable="false"><path d="M8 24.5 L8.2 9.5 C8.2 6.2 10 4.2 12.4 4.2 C14.8 4.2 16.4 6.1 16.4 9.3 L16.2 25.5 C16.2 27.6 15 29.3 12.9 29.3 C10.8 29.3 9.9 27.7 9.9 25.6 L10.1 11.2 C10.1 10 10.8 8.9 12.1 8.9 C13.4 8.9 14 9.9 14 11.1 L13.8 24.4" fill="none" stroke="#a7a49b" stroke-width="2" stroke-linecap="round"></path></svg>
+        <div class="fpanel" role="tabpanel" id="panel-fed" aria-labelledby="tab-fed">
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-folder"></use></svg>IDEA Section 618 Data Collections</h3>
         <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
         <p>Lead the 2023&ndash;24 and 2024&ndash;25 Discipline and Personnel collections and their static tables, and support the MOE/CEIS, Assessment, and Part C Child Count collections. QC, validation, and Section 508-accessible public displays.</p>
         <div class="meta">Discipline · Personnel · static tables · data visualization, UX, policy</div>
       </div>
 
-      <div class="project">
-        <h3>OSEP Fast Facts</h3>
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-papers"></use></svg>OSEP Fast Facts</h3>
         <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
         <p>Authored the four most recent OSEP Fast Facts releases, turning IDEA Section 618 data into accessible, Section 508-compliant data stories for the public.</p>
         <div class="meta">last 4 releases · Section 508 · data visualization, UX</div>
       </div>
 
-      <div class="project">
-        <h3>IDEA Annual Report to Congress</h3>
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-capitol"></use></svg>IDEA Annual Report to Congress</h3>
         <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
         <p>Contributed Section 618 data to, and served on the team responsible for, the IDEA Annual Report to Congress, the federal government's yearly report on the state of special education in the United States.</p>
         <div class="meta">2025 edition · federal report · data visualization, policy</div>
       </div>
 
-      <div class="project">
-        <h3>Python QC &amp; Automation Toolkit</h3>
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-snake"></use></svg>Python QC &amp; Automation Toolkit</h3>
         <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
         <p>Built Python automation for scoring-report parsing and quality-control checks, plus reusable Section 508-compliant reporting templates adopted across the division.</p>
         <div class="meta">adopted division-wide · machine learning, AI / GenAI, data visualization</div>
       </div>
 
-      <div class="project">
-        <h3>Language Use in Autism Research</h3>
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-chart"></use></svg>IDEA Data Dashboard &amp; Data Storytelling</h3>
+        <div class="org">Personal project · built on public IDEA Section 618 data</div>
+        <p>Built an interactive dashboard and a scrollytelling site that turn public IDEA Section 618 data into easy national and state views, with plain-language guides, drill-down popups, and a build-your-own-chart tool.</p>
+        <div class="meta">interactive dashboard · scrollytelling · data visualization, UX</div>
+      </div>
+
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-globe"></use></svg>Visa Outcome Prediction Engine</h3>
+        <div class="org">U.S. Department of State (intern)</div>
+        <p>Developed the data-scraping and modeling logic for a neural network predicting visa application outcomes; led the intern team through validation.</p>
+        <div class="meta">neural network · led validation team · machine learning, AI / GenAI</div>
+      </div>
+        </div>
+        <div class="fpanel" role="tabpanel" id="panel-res" aria-labelledby="tab-res">
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-bubble"></use></svg>Language Use in Autism Research</h3>
         <div class="org">Published in Autism (SAGE)</div>
         <p>Systematic analysis of 12,962 abstracts across 11 autism journals, tracing the shift from person-first to identity-first language.</p>
         <div class="meta">peer-reviewed · Zajic &amp; Gudknecht, 2024 · research</div>
       </div>
 
-      <div class="project">
-        <h3>Special Education Goals of Autistic Students</h3>
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pencil"></use></svg>Special Education Goals of Autistic Students</h3>
         <div class="org">Published in Exceptional Children</div>
         <p>Latent class analysis of IEP goals with demographic and developmental covariates, mapping how educational needs cluster.</p>
         <div class="meta">peer-reviewed · Zajic, Gudknecht &amp; McIntyre, 2025 · research</div>
       </div>
 
-      <div class="project">
-        <h3>Searching for Life on Exoplanets</h3>
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pulse"></use></svg>Population Health Regressions</h3>
+        <div class="org">Geisinger</div>
+        <p>Ran regressions across 90,000 patient records on autism-linked genetic disorders, plus COVID-19 supply and trend forecasting.</p>
+        <div class="meta">90K patients · presented at conference · machine learning, research</div>
+      </div>
+        </div>
+        <div class="fpanel" role="tabpanel" id="panel-space" aria-labelledby="tab-space">
+        <svg class="space-dust" viewBox="0 0 96 70" aria-hidden="true" focusable="false">
+          <path d="M22 8 L24.5 15 L31.5 17.5 L24.5 20 L22 27 L19.5 20 L12.5 17.5 L19.5 15 Z" fill="none" stroke="#b0761f" stroke-width="1.7" stroke-linejoin="round"></path>
+          <path d="M78 44 L79.8 48.6 L84.4 50.4 L79.8 52.2 L78 56.8 L76.2 52.2 L71.6 50.4 L76.2 48.6 Z" fill="none" stroke="#3f7ab0" stroke-width="1.5" stroke-linejoin="round"></path>
+          <g transform="translate(44 24) scale(1.45)" style="color:#7a5fc0"><use href="#d-planet"></use></g>
+        </svg>
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-planet"></use></svg>Searching for Life on Exoplanets</h3>
         <div class="org">NASA · Goddard</div>
         <p>Contributed to a project for a random-forest pipeline to detect chemical biosignatures in exoplanet spectra as part of the search for life.</p>
         <div class="meta">random forest · spectral classification · machine learning, research</div>
       </div>
 
-      <div class="project">
-        <h3>Hubble Social Analytics</h3>
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-scope"></use></svg>Hubble Social Analytics</h3>
         <div class="org">NASA</div>
         <p>Built an R + Data Studio dashboard with ARIMA forecasting. Insights reshaped strategy and broke the team record for post impressions.</p>
         <div class="meta">ARIMA · still in active use · data visualization, UX, research</div>
       </div>
 
-      <div class="project">
-        <h3>Population Health Regressions</h3>
-        <div class="org">Geisinger</div>
-        <p>Ran regressions across 90,000 patient records on autism-linked genetic disorders, plus COVID-19 supply and trend forecasting.</p>
-        <div class="meta">90K patients · presented at conference · machine learning, research</div>
-      </div>
-
-      <div class="project">
-        <h3>Visa Outcome Prediction Engine</h3>
-        <div class="org">U.S. Department of State (intern)</div>
-        <p>Developed the data-scraping and modeling logic for a neural network predicting visa application outcomes; led the intern team through validation.</p>
-        <div class="meta">neural network · led validation team · machine learning, AI / GenAI</div>
-      </div>
-
-      <div class="project">
-        <h3>Kepler Light-Curve Analysis</h3>
+        <div class="project">
+        <h3><svg class="doodle role-doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-star"></use></svg>Kepler Light-Curve Analysis</h3>
         <div class="org">NASA · Kepler</div>
         <p>Interpolated gaps and ran Fourier transforms on stellar time-series data from the Kepler Space Telescope.</p>
         <div class="meta">Fourier analysis · 4 conferences · research</div>
       </div>
-
-      <div class="project">
-        <h3>Neurodiversity Awareness Day</h3>
+        </div>
+        <div class="fpanel" role="tabpanel" id="panel-etc" aria-labelledby="tab-etc">
+        <div class="project">
+        <h3><svg class="role-inf" viewBox="0 0 100 52" aria-hidden="true" focusable="false"><path d="M50 26.5 C49.5 7 21 5.5 20.3 25.6 C19.6 45.5 49.5 46.5 50 26.5 C50.5 6.5 79.8 6 80 25.9 C80.2 46.5 50.5 46 50 26.5 Z" fill="none" stroke="url(#ndg)" stroke-width="10" stroke-linecap="round"></path></svg>Neurodiversity Awareness Day</h3>
         <div class="org">Autism &amp; Neurodivergency Advocacy Assn.</div>
         <p>Produced a 300+ attendee event with Columbia advancing neurodiversity inclusion, education, and community.</p>
         <div class="meta">300+ attendees · community-led · policy &amp; advocacy</div>
       </div>
 
       </div>
+        </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="education" class="reveal">
     <div class="wrap sec-grid">
-      <h2 class="sec-label"><svg class="doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-cap"></use></svg>Education</h2>
+      <h2 class="sec-label"><svg class="doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-cap"></use></svg>Education<svg class="doodle rail-spot rs-education c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-books"></use></svg></h2>
       <div class="sec-body edu-row">
         <div class="edu"><b>MS, Applied Statistics</b><span>Columbia University · 2021&ndash;2023</span></div>
         <div class="edu"><b>BS, Physics &amp; Data Science</b><span>Bloomsburg University of Pennsylvania · 2018&ndash;2021</span></div>
@@ -866,7 +1045,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
 
   <section id="speaking" class="reveal">
     <div class="wrap sec-grid">
-      <h2 class="sec-label"><svg class="doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-mega"></use></svg>Public speaking</h2>
+      <h2 class="sec-label"><svg class="doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-mega"></use></svg>Public speaking<svg class="doodle rail-spot rs-speaking c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-mic"></use></svg></h2>
       <div class="sec-body">
       <p class="section-note">I speak on neurodiversity, accessible data, and inclusive education, from United Nations panels to university stages. I'm open to public speaking as a side role, outside my federal work.</p>
       <div class="talks">
@@ -939,7 +1118,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
 
 <footer>
   <div class="wrap footer-inner">
-    <div>&copy; 2026 Juliette Gudknecht · views my own</div>
+    <div>&copy; 2026 Juliette Gudknecht · views my own <svg class="doodle foot-smile" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-smile"></use></svg></div>
     <div class="footer-links">
       <button type="button" id="privacyOpen">Privacy</button>
       <a href="mailto:juliettegudknecht14@gmail.com">Contact</a>
@@ -989,6 +1168,46 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
     reveals.forEach(function (el) { ro.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  var tablist = document.querySelector('.folder-tabs');
+  if (tablist) {
+    var ftabs = Array.prototype.slice.call(tablist.querySelectorAll('.ftab'));
+    var fpanels = ftabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+    var selectTab = function (idx, focus) {
+      ftabs.forEach(function (t, i) {
+        var on = i === idx;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        fpanels[i].hidden = !on;
+      });
+      if (focus) { ftabs[idx].focus(); }
+    };
+    ftabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { selectTab(i); });
+      t.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight') { n = (i + 1) % ftabs.length; }
+        else if (e.key === 'ArrowLeft') { n = (i - 1 + ftabs.length) % ftabs.length; }
+        else if (e.key === 'Home') { n = 0; }
+        else if (e.key === 'End') { n = ftabs.length - 1; }
+        if (n !== null) { e.preventDefault(); selectTab(n, true); }
+      });
+    });
+    selectTab(0);
+  }
+
+  var spyLinks = Array.prototype.slice.call(document.querySelectorAll('nav.site a[href^="#"]'));
+  if (spyLinks.length && 'IntersectionObserver' in window) {
+    var spyTargets = spyLinks.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          spyLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    spyTargets.forEach(function (t) { spy.observe(t); });
   }
 
   var intro = document.getElementById('intro');
