@@ -237,8 +237,6 @@ section { padding: 92px 0 0; }
 .role-inf { width: 27px; height: 15px; vertical-align: -1px; margin-right: 7px; display: inline-block; }
 .job:nth-child(odd) .role-doodle { transform: rotate(-5deg); }
 .job:nth-child(even) .role-doodle { transform: rotate(4deg); }
-.project:nth-child(odd) .role-doodle { transform: rotate(4deg); }
-.project:nth-child(even) .role-doodle { transform: rotate(-5deg); }
 .role-doodle { transition: transform 0.2s ease; }
 .job:hover .role-doodle, .project:hover .role-doodle { transform: rotate(0deg) scale(1.18); }
 
@@ -366,13 +364,28 @@ html.js .reveal.in .rail-spot :is(use, path:not(.rk-exhaust), circle) { animatio
 .skills dd small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--faint); }
 
 /* Projects */
-.project { padding: 21px 0; border-bottom: 1px solid var(--pink-soft); }
-.project:first-child { padding-top: 2px; }
+.project { padding: 22px 0; border-bottom: 1px solid var(--pink-soft); display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 20px; align-items: start; }
+.project:first-child { padding-top: 18px; }
 .project:last-child { border-bottom: none; }
 .project h3 { margin: 0; font-family: var(--hand); font-size: 18.5px; font-weight: 600; letter-spacing: -0.01em; }
 .project .org { margin: 2px 0 0; font-size: 13.5px; color: var(--muted); }
-.project p { margin: 7px 0 0; font-size: 14.5px; color: var(--muted); max-width: 660px; }
-.project .meta { margin-top: 6px; font-size: 12.5px; color: var(--faint); }
+.project p { margin: 7px 0 0; font-size: 14.5px; color: var(--muted); max-width: 640px; }
+.pv {
+  width: 92px; height: 92px; border-radius: 10px; border: 1px solid;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s ease;
+}
+.pv .doodle { width: 46px; height: 46px; }
+.pv .pv-inf { width: 58px; height: auto; }
+.pv-berry { background: #f9eef4; border-color: #ecd4e1; color: #b34576; }
+.pv-violet { background: #f3effa; border-color: #ded4f0; color: #7a5fc0; }
+.pv-blue { background: #edf3f8; border-color: #d3e0ec; color: #3f7ab0; }
+.pv-amber { background: #faf3e7; border-color: #ecdcc2; color: #b0761f; }
+.project:nth-child(4n+1) .pv { transform: rotate(-1.6deg); }
+.project:nth-child(4n+2) .pv { transform: rotate(1.2deg); }
+.project:nth-child(4n+3) .pv { transform: rotate(-0.8deg); }
+.project:nth-child(4n+4) .pv { transform: rotate(1.8deg); }
+.project:hover .pv { transform: rotate(0deg) scale(1.05); }
 
 /* Education */
 .edu-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
@@ -514,8 +527,12 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
   .job .years { padding-top: 0; font-size: 14px; }
   .talks { grid-template-columns: 1fr; gap: 30px; }
   .folder-body { padding: 4px 18px 10px; }
-  .folder-tabs { gap: 3px; padding: 0 6px; row-gap: 6px; }
-  .ftab { font-size: 12.5px; padding: 6px 8px 9px; }
+  .folder-tabs { gap: 2px; padding: 0 5px; row-gap: 6px; }
+  .project { grid-template-columns: 64px minmax(0, 1fr); gap: 14px; }
+  .pv { width: 64px; height: 64px; }
+  .pv .doodle { width: 34px; height: 34px; }
+  .pv .pv-inf { width: 42px; }
+  .ftab { font-size: 12px; padding: 6px 7px 9px; }
   .ftab[aria-selected="true"] { padding-bottom: 12px; }
   .space-dust { display: none; }
   .contact { padding-bottom: 72px; }
@@ -935,67 +952,85 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
             <svg class="paperclip" viewBox="0 0 24 34" aria-hidden="true" focusable="false"><path d="M8 24.5 L8.2 9.5 C8.2 6.2 10 4.2 12.4 4.2 C14.8 4.2 16.4 6.1 16.4 9.3 L16.2 25.5 C16.2 27.6 15 29.3 12.9 29.3 C10.8 29.3 9.9 27.7 9.9 25.6 L10.1 11.2 C10.1 10 10.8 8.9 12.1 8.9 C13.4 8.9 14 9.9 14 11.1 L13.8 24.4" fill="none" stroke="#a7a49b" stroke-width="2" stroke-linecap="round"></path></svg>
         <div class="fpanel" role="tabpanel" id="panel-fed" aria-labelledby="tab-fed">
         <div class="project">
-        <h3><svg class="doodle role-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-folder"></use></svg>IDEA Section 618 Data Collections</h3>
-        <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
-        <p>Lead the 2023&ndash;24 and 2024&ndash;25 Discipline and Personnel collections and their static tables, and support the MOE/CEIS, Assessment, and Part C Child Count collections. QC, validation, and Section 508-accessible public displays.</p>
-        <div class="meta">Discipline · Personnel · static tables · data visualization, UX, policy</div>
+        <span class="pv pv-berry" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-folder"></use></svg></span>
+        <div class="pbody">
+          <h3>IDEA Section 618 Data Collections</h3>
+          <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
+          <p>Lead the 2023&ndash;24 and 2024&ndash;25 Discipline and Personnel collections and their static tables, and support the MOE/CEIS, Assessment, and Part C Child Count collections. QC, validation, and Section 508-accessible public displays.</p>
+        </div>
       </div>
 
         <div class="project">
-        <h3><svg class="doodle role-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-papers"></use></svg>OSEP Fast Facts</h3>
-        <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
-        <p>Authored the four most recent OSEP Fast Facts releases, turning IDEA Section 618 data into accessible, Section 508-compliant data stories for the public.</p>
-        <div class="meta">last 4 releases · Section 508 · data visualization, UX</div>
+        <span class="pv pv-violet" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-papers"></use></svg></span>
+        <div class="pbody">
+          <h3>OSEP Fast Facts</h3>
+          <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
+          <p>Authored the four most recent OSEP Fast Facts releases, turning IDEA Section 618 data into accessible, Section 508-compliant data stories for the public.</p>
+        </div>
       </div>
 
         <div class="project">
-        <h3><svg class="doodle role-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-capitol"></use></svg>IDEA Annual Report to Congress</h3>
-        <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
-        <p>Contributed Section 618 data to, and served on the team responsible for, the IDEA Annual Report to Congress, the federal government's yearly report on the state of special education in the United States.</p>
-        <div class="meta">2025 edition · federal report · data visualization, policy</div>
+        <span class="pv pv-blue" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-capitol"></use></svg></span>
+        <div class="pbody">
+          <h3>IDEA Annual Report to Congress</h3>
+          <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
+          <p>Contributed Section 618 data to, and served on the team responsible for, the IDEA Annual Report to Congress, the federal government's yearly report on the state of special education in the United States.</p>
+        </div>
       </div>
 
         <div class="project">
-        <h3><svg class="doodle role-doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-snake"></use></svg>Python QC &amp; Automation Toolkit</h3>
-        <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
-        <p>Built Python automation for scoring-report parsing and quality-control checks, plus reusable Section 508-compliant reporting templates adopted across the division.</p>
-        <div class="meta">adopted division-wide · machine learning, AI / GenAI, data visualization</div>
+        <span class="pv pv-amber" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-snake"></use></svg></span>
+        <div class="pbody">
+          <h3>Python QC &amp; Automation Toolkit</h3>
+          <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
+          <p>Built Python automation for scoring-report parsing and quality-control checks, plus reusable Section 508-compliant reporting templates adopted across the division.</p>
+        </div>
       </div>
 
         <div class="project">
-        <h3><svg class="doodle role-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-chart"></use></svg>IDEA Data Dashboard &amp; Data Storytelling</h3>
-        <div class="org">Personal project · built on public IDEA Section 618 data</div>
-        <p>Built an interactive dashboard and a scrollytelling site that turn public IDEA Section 618 data into easy national and state views, with plain-language guides, drill-down popups, and a build-your-own-chart tool.</p>
-        <div class="meta">interactive dashboard · scrollytelling · data visualization, UX</div>
+        <span class="pv pv-berry" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-chart"></use></svg></span>
+        <div class="pbody">
+          <h3>IDEA Data Dashboard &amp; Data Storytelling</h3>
+          <div class="org">Personal project · built on public IDEA Section 618 data</div>
+          <p>Built an interactive dashboard and a scrollytelling site that turn public IDEA Section 618 data into easy national and state views, with plain-language guides, drill-down popups, and a build-your-own-chart tool.</p>
+        </div>
       </div>
 
         <div class="project">
-        <h3><svg class="doodle role-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-globe"></use></svg>Visa Outcome Prediction Engine</h3>
-        <div class="org">U.S. Department of State (intern)</div>
-        <p>Developed the data-scraping and modeling logic for a neural network predicting visa application outcomes; led the intern team through validation.</p>
-        <div class="meta">neural network · led validation team · machine learning, AI / GenAI</div>
+        <span class="pv pv-blue" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-globe"></use></svg></span>
+        <div class="pbody">
+          <h3>Visa Outcome Prediction Engine</h3>
+          <div class="org">U.S. Department of State (intern)</div>
+          <p>Developed the data-scraping and modeling logic for a neural network predicting visa application outcomes; led the intern team through validation.</p>
+        </div>
       </div>
         </div>
         <div class="fpanel" role="tabpanel" id="panel-res" aria-labelledby="tab-res">
         <div class="project">
-        <h3><svg class="doodle role-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-bubble"></use></svg>Language Use in Autism Research</h3>
-        <div class="org">Published in Autism (SAGE)</div>
-        <p>Systematic analysis of 12,962 abstracts across 11 autism journals, tracing the shift from person-first to identity-first language.</p>
-        <div class="meta">peer-reviewed · Zajic &amp; Gudknecht, 2024 · research</div>
+        <span class="pv pv-violet" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-bubble"></use></svg></span>
+        <div class="pbody">
+          <h3>Language Use in Autism Research</h3>
+          <div class="org">Published in Autism (SAGE)</div>
+          <p>Systematic analysis of 12,962 abstracts across 11 autism journals, tracing the shift from person-first to identity-first language.</p>
+        </div>
       </div>
 
         <div class="project">
-        <h3><svg class="doodle role-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pencil"></use></svg>Special Education Goals of Autistic Students</h3>
-        <div class="org">Published in Exceptional Children</div>
-        <p>Latent class analysis of IEP goals with demographic and developmental covariates, mapping how educational needs cluster.</p>
-        <div class="meta">peer-reviewed · Zajic, Gudknecht &amp; McIntyre, 2025 · research</div>
+        <span class="pv pv-blue" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pencil"></use></svg></span>
+        <div class="pbody">
+          <h3>Special Education Goals of Autistic Students</h3>
+          <div class="org">Published in Exceptional Children</div>
+          <p>Latent class analysis of IEP goals with demographic and developmental covariates, mapping how educational needs cluster.</p>
+        </div>
       </div>
 
         <div class="project">
-        <h3><svg class="doodle role-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pulse"></use></svg>Population Health Regressions</h3>
-        <div class="org">Geisinger</div>
-        <p>Ran regressions across 90,000 patient records on autism-linked genetic disorders, plus COVID-19 supply and trend forecasting.</p>
-        <div class="meta">90K patients · presented at conference · machine learning, research</div>
+        <span class="pv pv-violet" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pulse"></use></svg></span>
+        <div class="pbody">
+          <h3>Population Health Regressions</h3>
+          <div class="org">Geisinger</div>
+          <p>Ran regressions across 90,000 patient records on autism-linked genetic disorders, plus COVID-19 supply and trend forecasting.</p>
+        </div>
       </div>
         </div>
         <div class="fpanel" role="tabpanel" id="panel-space" aria-labelledby="tab-space">
@@ -1005,32 +1040,40 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
           <g transform="translate(44 24) scale(1.45)" style="color:#7a5fc0"><use href="#d-planet"></use></g>
         </svg>
         <div class="project">
-        <h3><svg class="doodle role-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-mic"></use></svg>Curious Universe Podcast Analytics</h3>
-        <div class="org">NASA · Goddard</div>
-        <p>Built an analytics dashboard for NASA's Curious Universe podcast, tracking episode performance and audience growth, and contributed insights to the show's team.</p>
-        <div class="meta">episode analytics · audience growth · data visualization, UX</div>
+        <span class="pv pv-violet" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-mic"></use></svg></span>
+        <div class="pbody">
+          <h3>Curious Universe Podcast Analytics</h3>
+          <div class="org">NASA · Goddard</div>
+          <p>Built an analytics dashboard for NASA's Curious Universe podcast, tracking episode performance and audience growth, and contributed insights to the show's team.</p>
+        </div>
       </div>
 
         <div class="project">
-        <h3><svg class="doodle role-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-scope"></use></svg>Hubble Social Analytics</h3>
-        <div class="org">NASA</div>
-        <p>Built an R + Data Studio dashboard with ARIMA forecasting. Insights reshaped strategy and broke the team record for post impressions.</p>
-        <div class="meta">ARIMA · still in active use · data visualization, UX, research</div>
+        <span class="pv pv-berry" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-scope"></use></svg></span>
+        <div class="pbody">
+          <h3>Hubble Social Analytics</h3>
+          <div class="org">NASA</div>
+          <p>Built an R + Data Studio dashboard with ARIMA forecasting. Insights reshaped strategy and broke the team record for post impressions.</p>
+        </div>
       </div>
 
         <div class="project">
-        <h3><svg class="doodle role-doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-star"></use></svg>Kepler Light-Curve Analysis</h3>
-        <div class="org">NASA · Kepler</div>
-        <p>Interpolated gaps and ran Fourier transforms on stellar time-series data from the Kepler Space Telescope.</p>
-        <div class="meta">Fourier analysis · 4 conferences · research</div>
+        <span class="pv pv-amber" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-star"></use></svg></span>
+        <div class="pbody">
+          <h3>Kepler Light-Curve Analysis</h3>
+          <div class="org">NASA · Kepler</div>
+          <p>Interpolated gaps and ran Fourier transforms on stellar time-series data from the Kepler Space Telescope.</p>
+        </div>
       </div>
         </div>
         <div class="fpanel" role="tabpanel" id="panel-etc" aria-labelledby="tab-etc">
         <div class="project">
-        <h3><svg class="role-inf" viewBox="0 0 100 52" aria-hidden="true" focusable="false"><path d="M50 26.5 C49.5 7 21 5.5 20.3 25.6 C19.6 45.5 49.5 46.5 50 26.5 C50.5 6.5 79.8 6 80 25.9 C80.2 46.5 50.5 46 50 26.5 Z" fill="none" stroke="url(#ndg)" stroke-width="10" stroke-linecap="round"></path></svg>Neurodiversity Awareness Day</h3>
-        <div class="org">Autism &amp; Neurodivergency Advocacy Assn.</div>
-        <p>Produced a 300+ attendee event with Columbia advancing neurodiversity inclusion, education, and community.</p>
-        <div class="meta">300+ attendees · community-led · policy &amp; advocacy</div>
+        <span class="pv pv-berry" aria-hidden="true"><svg class="pv-inf" viewBox="0 0 100 52" aria-hidden="true" focusable="false"><path d="M50 26.5 C49.5 7 21 5.5 20.3 25.6 C19.6 45.5 49.5 46.5 50 26.5 C50.5 6.5 79.8 6 80 25.9 C80.2 46.5 50.5 46 50 26.5 Z" fill="none" stroke="url(#ndg)" stroke-width="10" stroke-linecap="round"></path></svg></span>
+        <div class="pbody">
+          <h3>Neurodiversity Awareness Day</h3>
+          <div class="org">Autism &amp; Neurodivergency Advocacy Assn.</div>
+          <p>Produced a 300+ attendee event with Columbia advancing neurodiversity inclusion, education, and community.</p>
+        </div>
       </div>
 
       </div>
