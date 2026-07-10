@@ -283,6 +283,41 @@ html.js .folder-tabs { display: flex; }
 a, button, summary { touch-action: manipulation; }
 .stat b, .job .years { font-variant-numeric: tabular-nums; }
 nav.site a.active { color: var(--ink); text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 2px; text-decoration-color: var(--pink); }
+
+/* Scroll progress */
+.scrollbar { position: absolute; left: 0; right: 0; bottom: -2px; height: 3px; pointer-events: none; }
+#scrollFill { display: block; height: 100%; width: 100%; transform: scaleX(0); transform-origin: left; background: linear-gradient(90deg, #ec5fa8, #b07fd8, #6fa8dc, #f0b25e); }
+
+/* Rail doodles sketch themselves in */
+.rail-spot :is(use, path:not(.rk-exhaust), circle) { stroke-dasharray: 90; stroke-dashoffset: 0; }
+html.js .reveal.in .rail-spot :is(use, path:not(.rk-exhaust), circle) { animation: spotDraw 1.2s ease-out 0.3s both; }
+@keyframes spotDraw { from { stroke-dashoffset: 90; } }
+.rail-spot:hover { transform: scale(1.1) rotate(0deg); }
+.sec-label .rail-spot { transition: transform 0.2s ease; }
+
+/* Brand boop */
+@keyframes boop { 30% { transform: scale(1.18) rotate(-7deg); } 60% { transform: scale(0.95) rotate(3deg); } }
+.brand svg.boop { animation: boop 0.7s cubic-bezier(0.3, 1.6, 0.4, 1); }
+
+.foot-thanks { text-align: center; font-size: 13px; color: var(--faint); padding-bottom: 16px; }
+.print-name { display: none; }
+
+@media print {
+  header, .a11y-fab, .a11y-panel, #intro, .skip-link, .hero-sig, .rail-spot, .space-dust,
+  .paperclip, .plane, .folder-tabs, .foot-thanks, .scrollbar, .invite { display: none !important; }
+  html.js .reveal { opacity: 1 !important; transform: none !important; }
+  .fpanel, .fpanel[hidden] { display: block !important; }
+  body { background: #fff; }
+  .folder-body { border: none; background: transparent; padding: 0; }
+  .hero { padding-top: 16px; }
+  .print-name { display: block; font-family: var(--hand); font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-photo { display: none; }
+  section { padding-top: 36px; }
+  .sec-grid { grid-template-columns: 1fr; gap: 12px; }
+  .sec-label { position: static; }
+  a { color: inherit; text-decoration: none; }
+}
 .sec-body { min-width: 0; }
 .section-note { margin: 0 0 26px; font-size: 15.5px; color: var(--muted); max-width: 620px; }
 
@@ -700,6 +735,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
       <a href="#contact">Contact</a>
     </nav>
   </div>
+  <div class="scrollbar" aria-hidden="true"><span id="scrollFill"></span></div>
 </header>
 
 <main id="top">
@@ -708,6 +744,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
+          <div class="print-name">Juliette Gudknecht</div>
           <svg class="hero-sig" viewBox="0 0 100 52" aria-hidden="true" focusable="false"><path d="M50 26.5 C49.5 7 21 5.5 20.3 25.6 C19.6 45.5 49.5 46.5 50 26.5 C50.5 6.5 79.8 6 80 25.9 C80.2 46.5 50.5 46 50 26.5 Z" fill="none" stroke="url(#ndg)" stroke-width="8" stroke-linecap="round"></path></svg>
           <h1>Data that counts <em>everyone</em>.</h1>
       <p class="lede">I'm a data scientist and published researcher who makes data clear, accessible, and honest.</p>
@@ -821,7 +858,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
         <div>
           <h3><svg class="doodle role-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-rocket"></use></svg>Data Science / Analytics Intern</h3>
           <div class="org">NASA · Goddard Space Flight Center</div>
-          <p class="desc">Applied random-forest and ARIMA (time-series) models to exoplanet and social-media analytics, and built dashboards that the Hubble Space Telescope team continues to use.</p>
+          <p class="desc">Applied ARIMA (time-series) models to social-media analytics and built dashboards that the Hubble Space Telescope team continues to use.</p>
         </div>
       </div>
 
@@ -968,10 +1005,10 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
           <g transform="translate(44 24) scale(1.45)" style="color:#7a5fc0"><use href="#d-planet"></use></g>
         </svg>
         <div class="project">
-        <h3><svg class="doodle role-doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-planet"></use></svg>Searching for Life on Exoplanets</h3>
+        <h3><svg class="doodle role-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-mic"></use></svg>Curious Universe Podcast Analytics</h3>
         <div class="org">NASA · Goddard</div>
-        <p>Contributed to a project for a random-forest pipeline to detect chemical biosignatures in exoplanet spectra as part of the search for life.</p>
-        <div class="meta">random forest · spectral classification · machine learning, research</div>
+        <p>Built an analytics dashboard for NASA's Curious Universe podcast, tracking episode performance and audience growth, and contributed insights to the show's team.</p>
+        <div class="meta">episode analytics · audience growth · data visualization, UX</div>
       </div>
 
         <div class="project">
@@ -1117,6 +1154,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
 </main>
 
 <footer>
+  <div class="wrap foot-thanks">Thanks for scrolling all the way down.</div>
   <div class="wrap footer-inner">
     <div>&copy; 2026 Juliette Gudknecht · views my own <svg class="doodle foot-smile" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-smile"></use></svg></div>
     <div class="footer-links">
@@ -1182,6 +1220,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
         fpanels[i].hidden = !on;
       });
       if (focus) { ftabs[idx].focus(); }
+      if (typeof queueFill === 'function') { queueFill(); }
     };
     ftabs.forEach(function (t, i) {
       t.addEventListener('click', function () { selectTab(i); });
@@ -1195,6 +1234,48 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
       });
     });
     selectTab(0);
+  }
+
+  var fill = document.getElementById('scrollFill');
+  if (fill) {
+    var ticking = false;
+    var updateFill = function () {
+      ticking = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      fill.style.transform = 'scaleX(' + pct.toFixed(4) + ')';
+    };
+    var queueFill = function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(updateFill); }
+    };
+    window.addEventListener('scroll', queueFill, { passive: true });
+    window.addEventListener('resize', queueFill, { passive: true });
+    updateFill();
+  }
+
+  var printOpened = [];
+  window.addEventListener('beforeprint', function () {
+    printOpened = [];
+    document.querySelectorAll('details:not([open])').forEach(function (d) {
+      d.setAttribute('open', ''); printOpened.push(d);
+    });
+  });
+  window.addEventListener('afterprint', function () {
+    printOpened.forEach(function (d) { d.removeAttribute('open'); });
+    printOpened = [];
+  });
+
+  var brandSvg = document.querySelector('.brand svg');
+  if (brandSvg) {
+    brandSvg.parentNode.addEventListener('click', function () {
+      var noMotion = (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+        (document.documentElement.getAttribute('data-a11y') || '').indexOf('motion') !== -1;
+      if (noMotion) { return; }
+      brandSvg.classList.remove('boop');
+      void brandSvg.getBoundingClientRect();
+      brandSvg.classList.add('boop');
+    });
+    brandSvg.addEventListener('animationend', function () { brandSvg.classList.remove('boop'); });
   }
 
   var spyLinks = Array.prototype.slice.call(document.querySelectorAll('nav.site a[href^="#"]'));
