@@ -249,6 +249,27 @@ section { padding: 92px 0 0; }
 .stat:nth-child(2) .stat-doodle { transform: rotate(-6deg); }
 .stat:nth-child(4) .stat-doodle { transform: rotate(-8deg); }
 .foot-smile { width: 16px; height: 16px; vertical-align: -3px; margin-left: 5px; color: var(--pink); }
+.to-top {
+  position: fixed; left: 18px; bottom: 18px; z-index: 90;
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid #d4d2cd; background: #fff; color: var(--ink); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(36, 37, 43, 0.12);
+  opacity: 0; transform: translateY(12px); pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.15s;
+  touch-action: manipulation;
+}
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { border-color: var(--ink); }
+.to-top .tt-rocket { width: 22px; height: auto; transition: transform 0.2s ease; }
+.to-top:hover .tt-rocket { transform: translateY(-2px); }
+.to-top .tt-flame { opacity: 0; transition: opacity 0.15s; }
+.to-top:hover .tt-flame, .to-top.launching .tt-flame { opacity: 1; }
+.to-top.launching .tt-rocket { animation: ttLaunch 0.6s cubic-bezier(0.5, 0, 0.7, 1); }
+@keyframes ttLaunch { 55% { transform: translateY(-46px); opacity: 0; } 56% { transform: translateY(34px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+.space-dust .twinkle { transform-box: fill-box; transform-origin: center; animation: twinkle 3.4s ease-in-out infinite; }
+.space-dust .twinkle.t2 { animation-delay: 1.5s; animation-duration: 4s; }
+@keyframes twinkle { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.14); } }
 .role-doodle { width: 19px; height: 19px; vertical-align: -3px; margin-right: 8px; display: inline-block; }
 .role-inf { width: 27px; height: 15px; vertical-align: -1px; margin-right: 7px; display: inline-block; }
 .job:nth-child(odd) .role-doodle { transform: rotate(-5deg); }
@@ -373,7 +394,7 @@ dialog.shotbox .close {
 
 @media print {
   header, .a11y-fab, .a11y-panel, #intro, .skip-link, .hero-sig, .rail-spot, .space-dust,
-  .paperclip, .plane, .folder-tabs, .foot-thanks, .scrollbar, .invite, .shots, .readmore, .skillfold summary, .playmark, .resume-btn, .dash-view { display: none !important; }
+  .paperclip, .plane, .folder-tabs, .foot-thanks, .scrollbar, .invite, .shots, .readmore, .skillfold summary, .playmark, .resume-btn, .dash-view, .to-top { display: none !important; }
   html.js .reveal { opacity: 1 !important; transform: none !important; }
   .fpanel, .fpanel[hidden] { display: block !important; }
   body { background: #fff; }
@@ -905,10 +926,10 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
         </figure>
       </div>
       <div class="stats reveal" role="list" aria-label="At a glance">
-        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-papers"></use></svg><b>50</b><span>citations</span></div>
-        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pencil"></use></svg><b>10</b><span>publications</span></div>
-        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-mega"></use></svg><b>1,200</b><span>keynote reach</span></div>
-        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-heart"></use></svg><b>8M+</b><span>students with disabilities affected</span></div>
+        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-papers"></use></svg><b data-count="50">50</b><span>citations</span></div>
+        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-pencil"></use></svg><b data-count="10">10</b><span>publications</span></div>
+        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-mega"></use></svg><b data-count="1200" data-comma>1,200</b><span>keynote reach</span></div>
+        <div class="stat" role="listitem"><svg class="doodle stat-doodle c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-heart"></use></svg><b data-count="8" data-suffix="M+">8M+</b><span>students with disabilities affected</span></div>
       </div>
     </div>
   </div>
@@ -1277,8 +1298,8 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
         </div>
         <div class="fpanel" role="tabpanel" id="panel-space" aria-labelledby="tab-space">
         <svg class="space-dust" viewBox="0 0 96 70" aria-hidden="true" focusable="false">
-          <path d="M22 8 L24.5 15 L31.5 17.5 L24.5 20 L22 27 L19.5 20 L12.5 17.5 L19.5 15 Z" fill="none" stroke="#b0761f" stroke-width="1.7" stroke-linejoin="round"></path>
-          <path d="M78 44 L79.8 48.6 L84.4 50.4 L79.8 52.2 L78 56.8 L76.2 52.2 L71.6 50.4 L76.2 48.6 Z" fill="none" stroke="#3f7ab0" stroke-width="1.5" stroke-linejoin="round"></path>
+          <path class="twinkle" d="M22 8 L24.5 15 L31.5 17.5 L24.5 20 L22 27 L19.5 20 L12.5 17.5 L19.5 15 Z" fill="none" stroke="#9070bd" stroke-width="1.7" stroke-linejoin="round"></path>
+          <path class="twinkle t2" d="M78 44 L79.8 48.6 L84.4 50.4 L79.8 52.2 L78 56.8 L76.2 52.2 L71.6 50.4 L76.2 48.6 Z" fill="none" stroke="#3f7ab0" stroke-width="1.5" stroke-linejoin="round"></path>
           <g transform="translate(44 24) scale(1.45)" style="color:#7a5fc0"><use href="#d-planet"></use></g>
         </svg>
         <div class="project">
@@ -1432,6 +1453,14 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
   </div>
 </footer>
 
+<button class="to-top" id="toTop" type="button" aria-label="Back to top" title="Back to top">
+  <svg viewBox="0 0 24 34" aria-hidden="true" focusable="false" class="tt-rocket">
+    <path class="tt-flame" d="M12 25 L12 31" fill="none" stroke="#f0824a" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2.5 3"></path>
+    <path d="M8.4 16.5 L5.4 22.5 L8.7 21 Z M15.6 16.5 L18.6 22.5 L15.3 21 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+    <path d="M12 3.2 C15.1 6.3 16.7 12.2 16.5 18.6 C16.4 20.9 15 22.4 12 22.4 C9 22.4 7.6 20.9 7.5 18.6 C7.3 12.2 8.9 6.3 12 3.2 Z" fill="#fff" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+    <circle cx="12" cy="11" r="2.1" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+  </svg>
+</button>
 <button class="a11y-fab" id="a11yFab" aria-expanded="false" aria-controls="a11yPanel">
   <svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-person"></use></svg>
   Accessibility options
@@ -1531,6 +1560,52 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
       });
     });
     selectTab(0);
+  }
+
+  var noMotion = function () {
+    return (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+      (document.documentElement.getAttribute('data-a11y') || '').indexOf('motion') !== -1;
+  };
+
+  var statBand = document.querySelector('.stats');
+  if (statBand && 'IntersectionObserver' in window) {
+    var counted = false;
+    var countObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting || counted) return;
+        counted = true; countObs.disconnect();
+        if (noMotion()) return;
+        Array.prototype.forEach.call(statBand.querySelectorAll('b[data-count]'), function (b) {
+          var target = parseFloat(b.getAttribute('data-count'));
+          var suffix = b.getAttribute('data-suffix') || '';
+          var comma = b.hasAttribute('data-comma');
+          var dur = 1100, startT = null;
+          var fmt = function (n) { n = Math.round(n); return (comma ? n.toLocaleString() : n) + suffix; };
+          var step = function (ts) {
+            if (startT === null) startT = ts;
+            var t = Math.min(1, (ts - startT) / dur);
+            var e = 1 - Math.pow(1 - t, 3);
+            b.textContent = fmt(target * e);
+            if (t < 1) requestAnimationFrame(step); else b.textContent = fmt(target);
+          };
+          b.textContent = fmt(0);
+          requestAnimationFrame(step);
+        });
+      });
+    }, { threshold: 0.4 });
+    countObs.observe(statBand);
+  }
+
+  var toTop = document.getElementById('toTop');
+  if (toTop) {
+    var syncToTop = function () { toTop.classList.toggle('show', window.scrollY > 520); };
+    window.addEventListener('scroll', syncToTop, { passive: true });
+    syncToTop();
+    toTop.addEventListener('click', function () {
+      if (!noMotion()) { toTop.classList.remove('launching'); void toTop.offsetWidth; toTop.classList.add('launching'); }
+      window.scrollTo({ top: 0, behavior: noMotion() ? 'auto' : 'smooth' });
+    });
+    toTop.addEventListener('animationend', function () { toTop.classList.remove('launching'); });
   }
 
   var fill = document.getElementById('scrollFill');
