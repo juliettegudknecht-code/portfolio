@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Juliette Gudknecht · Federal Data Scientist and Data Steward</title>
 <meta name="description" content="Juliette Gudknecht is a federal data scientist and data-governance professional who makes public data clear, accessible, and honest.">
-<meta name="theme-color" content="#fbfaf8">
+<meta name="theme-color" content="#0a0d1c">
 <link rel="canonical" href="https://juliettegudknecht-code.github.io/portfolio/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23ec5fa8'/%3E%3Cstop offset='0.55' stop-color='%239b6bd8'/%3E%3Cstop offset='1' stop-color='%234f92c4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M6 34 C 10 31 12.5 30 15.5 28 C 19 25.5 22 23 25 20.5' fill='none' stroke='url(%23g)' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='6' cy='34' r='3' fill='%23ec5fa8'/%3E%3Ccircle cx='15.5' cy='28' r='2.8' fill='%239b6bd8'/%3E%3Cg transform='translate(28 15) rotate(45)'%3E%3Cpath d='M-1.6 5.5 C -1.1 9 1.1 9 1.6 5.5 Z' fill='%23f0824a'/%3E%3Cpath d='M-3.4 1.8 L-5.7 6.3 L-3.1 5.3 Z M3.4 1.8 L5.7 6.3 L3.1 5.3 Z' fill='none' stroke='%2324252b' stroke-width='1.8' stroke-linejoin='round'/%3E%3Cpath d='M0 -9 C 2.5 -6.8 3.6 -2.2 3.4 3 C 3.3 4.6 2.2 5.7 0 5.7 C -2.2 5.7 -3.3 4.6 -3.4 3 C -3.6 -2.2 -2.5 -6.8 0 -9 Z' fill='%23fff' stroke='%2324252b' stroke-width='2' stroke-linejoin='round'/%3E%3Ccircle cx='0' cy='-2.2' r='1.8' fill='none' stroke='%2324252b' stroke-width='1.7'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="website">
@@ -789,8 +789,105 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
   .contact { padding-bottom: 72px; }
 }
 </style>
+<style id="darkstars">
+/* ============================================================
+   Dark starfield theme. Screen only; print keeps the paper look.
+   ============================================================ */
+@media screen {
+:root {
+  --paper: #0a0d1c;
+  --ink: #e9ecf7;
+  --muted: #a8b0c7;
+  --faint: #8e96ad;
+  --pink: #c25a8e;
+  --pink-deep: #ef9ac4;
+  --pink-soft: #322a4a;
+  --pink-faint: #201a33;
+  --card: #131a33;
+  --card2: #0e1428;
+  --border: #33406a;
+}
+html { scrollbar-color: #2a3358 #080a16; }
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: #080a16; }
+::-webkit-scrollbar-thumb { background: #222c52; border: 3px solid #080a16; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #2e3a68; }
+::selection { background: #8c2f56; color: #fff; }
+
+/* header + chrome */
+header { background: rgba(10, 13, 28, 0.88); }
+.skip-link { background: var(--card); }
+.btn, .to-top, .a11y-fab, .a11y-panel, .a11y-tog, .intro-skip, .shot,
+dialog.shotbox .close, dialog.privacy .close { background: var(--card); }
+.btn, .to-top, .a11y-fab, .intro-skip { border-color: var(--border); }
+.btn:hover, .to-top:hover, .intro-skip:hover { border-color: var(--ink); }
+.btn.primary { background: var(--pink); border-color: var(--pink); }
+.btn.primary:hover, .resume-btn:hover { background: #a84470; border-color: #a84470; }
+.to-top, .a11y-fab { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55); }
+.a11y-panel { box-shadow: 0 10px 34px rgba(0, 0, 0, 0.6); }
+.a11y-knob { background: #3a4258; }
+dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 0.72); }
+
+/* accents, lightened for dark */
+.stat:nth-child(1) b, .c-berry { color: #e07aa9; }
+.stat:nth-child(2) b, .c-violet { color: #ab8df0; }
+.stat:nth-child(3) b, .c-blue { color: #77aede; }
+.stat:nth-child(4) b, .c-amber { color: #dca757; }
+.research h3 mark { background: linear-gradient(to top, rgba(224, 122, 169, 0.28) 45%, transparent 45%); }
+.job .years .current { background: #2a1626; border-color: #592c47; }
+
+/* project folders as night files */
+.ftab { background: var(--card2); border-color: #2c3654; }
+.ftab[aria-selected="true"] { background: var(--card); border-color: #3d4a78; }
+.ftab[aria-selected="true"]::after { background: var(--card); }
+.folder-body { background: var(--card); border-color: #3d4a78; }
+.ft-berry[aria-selected="true"] { color: #e07aa9; }
+.ft-violet[aria-selected="true"] { color: #ab8df0; }
+.ft-blue[aria-selected="true"] { color: #77aede; }
+.ft-amber[aria-selected="true"] { color: #dca757; }
+
+/* project tiles */
+.pv-berry { background: #241322; border-color: #592c47; color: #e07aa9; }
+.pv-violet { background: #1c1836; border-color: #453a70; color: #ab8df0; }
+.pv-blue { background: #142137; border-color: #2d4a6e; color: #77aede; }
+.pv-amber { background: #271e11; border-color: #5c4522; color: #dca757; }
+
+/* timeline squiggle + node marks */
+.tl-track::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='14' viewBox='0 0 38 14'%3E%3Cpath d='M0 7 Q4.75 1.5 9.5 7 T19 7 T28.5 7 T38 7' fill='none' stroke='%23545f82' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.tl-node[aria-selected="true"] .tl-mark { box-shadow: 0 3px 11px rgba(224, 122, 169, 0.25); }
+
+/* doodle ink that was drawn for paper */
+[stroke="#24252b"] { stroke: #e9ecf7; }
+[stroke="#54565e"] { stroke: #aeb6cc; }
+[stroke="#8a8c92"] { stroke: #9aa2b8; }
+[stroke="#a7a49b"] { stroke: #8e96ad; }
+
+/* high-contrast a11y mode, remapped for the dark canvas */
+[data-a11y~="contrast"] { --muted: #cdd4e6; --faint: #bcc3d7; --ink: #ffffff; --pink-deep: #f6b1d2; --pink: #d76b9e; }
+
+/* ---------- the starfield ---------- */
+#stars { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+#stars::before, #stars::after { content: ''; position: absolute; border-radius: 50%; pointer-events: none; }
+#stars::before { width: 58vw; height: 58vw; right: -20vw; top: -18vw; background: radial-gradient(circle, rgba(168, 68, 112, 0.09), transparent 66%); }
+#stars::after { width: 64vw; height: 64vw; left: -24vw; bottom: -26vw; background: radial-gradient(circle, rgba(122, 95, 192, 0.08), transparent 66%); }
+#stars .starlayer { position: absolute; inset: 0; will-change: transform; }
+#stars .star { position: absolute; border-radius: 50%; background: #cfd8f2; }
+#stars .star.tw { animation: starTw 5s ease-in-out infinite; }
+@keyframes starTw { 0%, 100% { opacity: 0.14; } 50% { opacity: 0.5; } }
+#stars .far .star.tw { animation-name: starTwF; }
+@keyframes starTwF { 0%, 100% { opacity: 0.07; } 50% { opacity: 0.28; } }
+#stars .dstar { position: absolute; width: 15px; height: 15px; margin: -7.5px; opacity: 0.45; }
+#stars .dstar svg { width: 100%; height: 100%; display: block; }
+#stars .dstar.tw { animation: dstarTw 6.5s ease-in-out infinite; }
+@keyframes dstarTw { 0%, 100% { opacity: 0.14; transform: scale(0.65); } 50% { opacity: 0.6; transform: scale(1); } }
+.shootingstar { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: #fff; box-shadow: 0 0 7px 2px rgba(255, 255, 255, 0.85); opacity: 0; pointer-events: none; left: -6%; animation: shoot 1.7s ease-in forwards; }
+.shootingstar::before { content: ''; position: absolute; top: 50%; right: 0; width: 130px; height: 1.6px; transform: translateY(-50%); background: linear-gradient(270deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0)); }
+@keyframes shoot { 0% { opacity: 0; transform: translate(0, 0) rotate(14deg); } 10% { opacity: 1; } 86% { opacity: 1; } 100% { opacity: 0; transform: translate(112vw, 300px) rotate(14deg); } }
+}
+</style>
 </head>
 <body>
+<div id="stars" aria-hidden="true"></div>
 
 <a class="skip-link" href="#top">Skip to content</a>
 
@@ -2190,5 +2287,68 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
 })();
 </script>
 
+<script>
+/* Starfield: two twinkling depth layers with diffraction sparkles, gentle
+   scroll parallax, and a rare ambient shooting star. Respects the reduced
+   motion preference and the site's own motion toggle. */
+(function () {
+  var DSTAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 L12.9 11.1 24 12 12.9 12.9 12 24 11.1 12.9 0 12 11.1 11.1 Z" fill="#e6ecff"/></svg>';
+  function motionOff() {
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return true;
+      return (document.documentElement.getAttribute('data-a11y') || '').indexOf('motion') >= 0;
+    } catch (e) { return false; }
+  }
+  var host = document.getElementById('stars');
+  if (!host) return;
+  var still = motionOff();
+  var TINTS = ['#cfd8f2', '#cfd8f2', '#cfd8f2', '#bcd2ff', '#f4d9e8'];
+  function star(near) {
+    var x = (Math.random() * 100).toFixed(2), y = (Math.random() * 100).toFixed(2),
+        s = (near ? Math.random() * 1.5 + 0.9 : Math.random() * 0.9 + 0.5).toFixed(2),
+        o = (near ? Math.random() * 0.35 + 0.16 : Math.random() * 0.22 + 0.08).toFixed(2),
+        d = (Math.random() * 6).toFixed(2), c = TINTS[Math.floor(Math.random() * TINTS.length)];
+    return '<i class="star' + (still ? '' : ' tw') + '" style="left:' + x + '%;top:' + y + '%;width:' + s + 'px;height:' + s + 'px;opacity:' + o + ';background:' + c + ';animation-delay:' + d + 's"></i>';
+  }
+  var far = '', near = '', i;
+  for (i = 0; i < 60; i++) far += star(false);
+  for (i = 0; i < 42; i++) near += star(true);
+  for (i = 0; i < 6; i++) {
+    near += '<span class="dstar' + (still ? '' : ' tw') + '" style="left:' + (Math.random() * 94 + 3).toFixed(2) + '%;top:' + (Math.random() * 90 + 3).toFixed(2) + '%;animation-delay:' + (Math.random() * 6).toFixed(2) + 's">' + DSTAR + '</span>';
+  }
+  host.innerHTML = '<div class="starlayer far">' + far + '</div><div class="starlayer near">' + near + '</div>';
+
+  var farEl = host.querySelector('.starlayer.far'), nearEl = host.querySelector('.starlayer.near'), raf = 0;
+  function parallax() {
+    if (motionOff()) return;
+    var cap = window.innerHeight * 0.45, y = window.scrollY || 0;
+    farEl.style.transform = 'translateY(' + (-Math.min(y * 0.04, cap)).toFixed(1) + 'px)';
+    nearEl.style.transform = 'translateY(' + (-Math.min(y * 0.09, cap)).toFixed(1) + 'px)';
+  }
+  window.addEventListener('scroll', function () {
+    if (raf) return;
+    raf = requestAnimationFrame(function () { raf = 0; parallax(); });
+  }, { passive: true });
+
+  function scheduleShot(first) {
+    setTimeout(fireShot, first ? (25000 + Math.random() * 20000) : (110000 + Math.random() * 130000));
+  }
+  function fireShot() {
+    try {
+      if (!motionOff() && !document.hidden) {
+        var el = document.createElement('div');
+        el.className = 'shootingstar';
+        el.style.top = (Math.random() * 55 + 5).toFixed(1) + '%';
+        el.style.animationDuration = (Math.random() * 0.8 + 1.4).toFixed(2) + 's';
+        el.addEventListener('animationend', function () { try { el.remove(); } catch (e) {} });
+        host.appendChild(el);
+        setTimeout(function () { try { el.remove(); } catch (e) {} }, 4500);
+      }
+    } catch (e) {}
+    scheduleShot(false);
+  }
+  scheduleShot(true);
+})();
+</script>
 </body>
 </html>
