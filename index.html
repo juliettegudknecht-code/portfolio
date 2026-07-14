@@ -394,7 +394,7 @@ dialog.shotbox .close {
   .tl-pane[hidden] { display: block !important; }
   .tl-pane { margin-bottom: 14px; border-top: 1px solid #ddd; padding-top: 10px; }
   header, .a11y-fab, .a11y-panel, #intro, .skip-link, .hero-sig, .rail-spot, .space-dust,
-  .paperclip, .plane, .folder-tabs, .foot-thanks, .scrollbar, .invite, .shots, .readmore, .skillfold summary, .playmark, .resume-btn, .dash-view, .to-top { display: none !important; }
+  .paperclip, .plane, .contact-planet, .folder-tabs, .foot-thanks, .scrollbar, .invite, .shots, .readmore, .skillfold summary, .playmark, .resume-btn, .dash-view, .to-top { display: none !important; }
   html.js .reveal { opacity: 1 !important; transform: none !important; }
   .fpanel, .fpanel[hidden] { display: block !important; }
   body { background: #fff; }
@@ -656,6 +656,7 @@ dialog.vidbox .close:hover { background: rgba(24, 20, 24, 0.92); }
 .plane { position: absolute; right: 0; top: -20px; width: 190px; height: auto; }
 .plane .flight { stroke-dasharray: 5 6; animation: fly 26s linear infinite; }
 @keyframes fly { to { stroke-dashoffset: -220; } }
+.contact-planet { position: absolute; right: 26px; top: 118px; width: 120px; height: 120px; color: #8f9df0; opacity: 0.15; transform: rotate(-8deg); pointer-events: none; }
 .contact-box h3 { margin: 0; font-family: var(--hand); font-size: clamp(32px, 4.2vw, 50px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.06; max-width: 720px; }
 .contact-box p { margin: 18px 0 0; color: var(--muted); max-width: 620px; }
 
@@ -736,6 +737,7 @@ html[data-a11y~="motion"] { scroll-behavior: auto; }
 
 @media (max-width: 960px) {
   .rail-spot { display: none; }
+  .contact-planet { display: none; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-photo { max-width: 420px; }
   .sec-grid { grid-template-columns: 1fr; gap: 18px; }
@@ -853,14 +855,29 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
 .pv-amber { background: #271e11; border-color: #5c4522; color: #dca757; }
 
 /* timeline squiggle + node marks */
-.tl-track::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='14' viewBox='0 0 38 14'%3E%3Cpath d='M0 7 Q4.75 1.5 9.5 7 T19 7 T28.5 7 T38 7' fill='none' stroke='%23545f82' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"); }
-.tl-node[aria-selected="true"] .tl-mark { box-shadow: 0 3px 11px rgba(224, 122, 169, 0.25); }
+.tl-track::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='76' height='14' viewBox='0 0 76 14'%3E%3Cg fill='%23566099'%3E%3Ccircle cx='4' cy='7' r='1.2'/%3E%3Ccircle cx='14' cy='7' r='1.2'/%3E%3Ccircle cx='24' cy='7' r='1.2'/%3E%3Ccircle cx='34' cy='7' r='1.2'/%3E%3Ccircle cx='44' cy='7' r='1.2'/%3E%3Ccircle cx='54' cy='7' r='1.2'/%3E%3C/g%3E%3Cpath d='M66 2.6 L67 6 70.4 7 67 8 66 11.4 65 8 61.6 7 65 6 Z' fill='%238b96d6'/%3E%3C/svg%3E"); }
+.tl-node[aria-selected="true"] .tl-mark { border-color: #e07aa9; box-shadow: 0 0 0 5px rgba(224, 122, 169, 0.12), 0 3px 14px rgba(224, 122, 169, 0.3); }
+.tl-mark::after { content: ''; position: absolute; top: -8px; right: -7px; width: 11px; height: 11px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1 L13.6 10.4 23 12 13.6 13.6 12 23 10.4 13.6 1 12 10.4 10.4 Z' fill='%23dfe6ff'/%3E%3C/svg%3E") center/contain no-repeat; opacity: 0; transform: scale(0.4); transition: opacity 0.25s ease, transform 0.25s ease; pointer-events: none; }
+.tl-node[aria-selected="true"] .tl-mark::after { opacity: 0.95; transform: scale(1); animation: twinkle 3.4s ease-in-out 0.3s infinite; }
+.space-dust { opacity: 0.72; }
+.plane .twinkle { transform-box: fill-box; transform-origin: center; animation: twinkle 3.4s ease-in-out infinite; }
+.plane .twinkle.t2 { animation-delay: 1.5s; animation-duration: 4s; }
 
 /* doodle ink that was drawn for paper */
 [stroke="#24252b"] { stroke: #e9ecf7; }
 [stroke="#54565e"] { stroke: #aeb6cc; }
 [stroke="#8a8c92"] { stroke: #9aa2b8; }
 [stroke="#a7a49b"] { stroke: #8e96ad; }
+[stroke="#b34576"] { stroke: #e07aa9; }
+[stroke="#7a5fc0"] { stroke: #ab8df0; }
+[stroke="#3f7ab0"] { stroke: #77aede; }
+[stroke="#9070bd"] { stroke: #ab8df0; }
+[fill="#b34576"] { fill: #e07aa9; }
+[fill="#7a5fc0"] { fill: #ab8df0; }
+[fill="#3f7ab0"] { fill: #77aede; }
+[fill="rgba(179,69,118,0.16)"] { fill: rgba(224,122,169,0.17); }
+[fill="rgba(122,95,192,0.16)"] { fill: rgba(171,141,240,0.17); }
+[fill="rgba(63,122,176,0.16)"] { fill: rgba(119,174,222,0.17); }
 
 /* high-contrast a11y mode, remapped for the dark canvas */
 [data-a11y~="contrast"] { --muted: #cdd4e6; --faint: #bcc3d7; --ink: #ffffff; --pink-deep: #f6b1d2; --pink: #d76b9e; }
@@ -871,6 +888,8 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
 #stars::before { width: 58vw; height: 58vw; right: -20vw; top: -18vw; background: radial-gradient(circle, rgba(168, 68, 112, 0.09), transparent 66%); }
 #stars::after { width: 64vw; height: 64vw; left: -24vw; bottom: -26vw; background: radial-gradient(circle, rgba(122, 95, 192, 0.08), transparent 66%); }
 #stars .starlayer { position: absolute; inset: 0; will-change: transform; }
+#stars .milkyway { position: absolute; inset: -14% -22%; background: linear-gradient(112deg, transparent 40%, rgba(150,164,224,0.05) 47%, rgba(232,220,244,0.08) 51%, rgba(150,164,224,0.05) 55%, transparent 62%); }
+#stars .constel { position: absolute; opacity: 0.5; }
 #stars .star { position: absolute; border-radius: 50%; background: #cfd8f2; }
 #stars .star.tw { animation: starTw 5s ease-in-out infinite; }
 @keyframes starTw { 0%, 100% { opacity: 0.14; } 50% { opacity: 0.5; } }
@@ -1650,7 +1669,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
         <svg class="space-dust" viewBox="0 0 96 70" aria-hidden="true" focusable="false">
           <path class="twinkle" d="M22 8 L24.5 15 L31.5 17.5 L24.5 20 L22 27 L19.5 20 L12.5 17.5 L19.5 15 Z" fill="none" stroke="#9070bd" stroke-width="1.7" stroke-linejoin="round"></path>
           <path class="twinkle t2" d="M78 44 L79.8 48.6 L84.4 50.4 L79.8 52.2 L78 56.8 L76.2 52.2 L71.6 50.4 L76.2 48.6 Z" fill="none" stroke="#3f7ab0" stroke-width="1.5" stroke-linejoin="round"></path>
-          <g transform="translate(44 24) scale(1.45)" style="color:#7a5fc0"><use href="#d-planet"></use></g>
+          <g transform="translate(44 24) scale(1.45)" style="color:#ab8df0"><use href="#d-planet"></use></g>
         </svg>
         <div class="project">
         <span class="pv pv-violet" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-mic"></use></svg></span>
@@ -1701,6 +1720,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
           </div>
           <div class="folder-body">
             <div class="fpanel cites" role="tabpanel" id="panel-pubj" aria-labelledby="tab-pubj">
+              <svg class="space-dust" viewBox="0 0 96 70" aria-hidden="true" focusable="false"><path d="M14 46 C30 38 48 30 64 24" fill="none" stroke="#9070bd" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="2.5 5"></path><circle cx="70" cy="21.6" r="4.2" fill="none" stroke="#9070bd" stroke-width="1.8"></circle><path class="twinkle t2" d="M84 40 L85.5 44 89.5 45.5 85.5 47 84 51 82.5 47 78.5 45.5 82.5 44 Z" fill="none" stroke="#3f7ab0" stroke-width="1.5" stroke-linejoin="round"></path></svg>
               <div class="pub">
                 <a class="pub-title" href="https://doi.org/10.1089/aut.2023.0167" target="_blank" rel="noopener">Meta-synthesis of autistic adults&rsquo; first-person perspectives about mental health-related services</a>
                 <span class="authors">Andoni, Eisenhower, Gudknecht &amp; Levitt &middot; <em>Autism in Adulthood</em> &middot; 2026</span>
@@ -1900,8 +1920,11 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
       <div class="contact-box">
         <svg class="plane" viewBox="0 0 150 74" aria-hidden="true" focusable="false">
           <path class="flight" d="M6 64 C 40 72, 64 48, 53 35 C 46 26, 31 34, 40 44 C 53 57, 90 40, 110 24" fill="none" stroke="#3f7ab0" stroke-width="2" stroke-linecap="round"></path>
+          <path class="twinkle" d="M28 16 L29.4 19.6 33 21 29.4 22.4 28 26 26.6 22.4 23 21 26.6 19.6 Z" fill="none" stroke="#3f7ab0" stroke-width="1.3" stroke-linejoin="round"></path>
+          <path class="twinkle t2" d="M64 6 L65.2 9 68.2 10.2 65.2 11.4 64 14.4 62.8 11.4 59.8 10.2 62.8 9 Z" fill="none" stroke="#3f7ab0" stroke-width="1.2" stroke-linejoin="round"></path>
           <path d="M110 25 L144 8 L127 34 L121 24 Z M144 8 L121 24" fill="none" stroke="#3f7ab0" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"></path>
         </svg>
+        <svg class="contact-planet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-planet"></use></svg>
         <h3>Want to work together?</h3>
         <p>I take on the occasional side project or speaking engagement when it stays clear of my federal ethics rules, and I am open to the right new role. If you are working on something in data, machine learning, AI, or accessible technology, or would like me to speak, send me a note.</p>
         <div class="actions">
@@ -2060,6 +2083,36 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
     return (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
       (document.documentElement.getAttribute('data-a11y') || '').indexOf('motion') !== -1;
   };
+
+  var statsBand = document.querySelector('.stats');
+  if (statsBand && 'IntersectionObserver' in window) {
+    var statParsed = Array.prototype.slice.call(statsBand.querySelectorAll('.stat b')).map(function (el) {
+      var m = (el.textContent || '').match(/^([\d,]+)(.*)$/);
+      if (!m) { return null; }
+      return { el: el, target: parseInt(m[1].replace(/,/g, ''), 10), suffix: m[2] || '', comma: m[1].indexOf(',') !== -1 };
+    });
+    var statFmt = function (n, comma) { n = Math.round(n); return comma ? n.toLocaleString('en-US') : String(n); };
+    var statRan = false;
+    var runCounts = function () {
+      if (statRan) { return; }
+      statRan = true;
+      if (noMotion()) { return; }
+      var t0 = null, DUR = 1200;
+      var tick = function (ts) {
+        if (t0 === null) { t0 = ts; }
+        var pr = Math.min(1, (ts - t0) / DUR);
+        var e = 1 - Math.pow(1 - pr, 3);
+        statParsed.forEach(function (s) { if (s) { s.el.textContent = statFmt(s.target * e, s.comma) + s.suffix; } });
+        if (pr < 1) { requestAnimationFrame(tick); }
+      };
+      statParsed.forEach(function (s) { if (s) { s.el.textContent = statFmt(0, false) + s.suffix; } });
+      requestAnimationFrame(tick);
+    };
+    var statObs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { runCounts(); statObs.disconnect(); }
+    }, { threshold: 0.35 });
+    statObs.observe(statsBand);
+  }
 
   var tlTrack = document.querySelector('.tl-track');
   if (tlTrack) {
@@ -2339,12 +2392,22 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
     return '<i class="star' + (still ? '' : ' tw') + '" style="left:' + x + '%;top:' + y + '%;width:' + s + 'px;height:' + s + 'px;opacity:' + o + ';background:' + c + ';animation-delay:' + d + 's"></i>';
   }
   var far = '', near = '', i;
-  for (i = 0; i < 60; i++) far += star(false);
-  for (i = 0; i < 42; i++) near += star(true);
+  for (i = 0; i < 72; i++) far += star(false);
+  for (i = 0; i < 52; i++) near += star(true);
   for (i = 0; i < 6; i++) {
     near += '<span class="dstar' + (still ? '' : ' tw') + '" style="left:' + (Math.random() * 94 + 3).toFixed(2) + '%;top:' + (Math.random() * 90 + 3).toFixed(2) + '%;animation-delay:' + (Math.random() * 6).toFixed(2) + 's">' + DSTAR + '</span>';
   }
-  host.innerHTML = '<div class="starlayer far">' + far + '</div><div class="starlayer near">' + near + '</div>';
+  var constel =
+    '<svg class="constel" style="left:5%;top:14%;width:160px" viewBox="0 0 150 90" aria-hidden="true">' +
+      '<polyline points="18,58 44,64 52,40 26,34 18,58" fill="none" stroke="rgba(180,195,240,0.3)" stroke-width="1" stroke-dasharray="3 5"/>' +
+      '<polyline points="52,40 78,30 104,26 132,14" fill="none" stroke="rgba(180,195,240,0.3)" stroke-width="1" stroke-dasharray="3 5"/>' +
+      '<g fill="#cfd8f2"><circle cx="18" cy="58" r="2"/><circle cx="44" cy="64" r="1.7"/><circle cx="52" cy="40" r="2"/><circle cx="26" cy="34" r="1.6"/><circle cx="78" cy="30" r="1.7"/><circle cx="104" cy="26" r="1.6"/><circle cx="132" cy="14" r="2.2"/></g>' +
+    '</svg>' +
+    '<svg class="constel" style="right:7%;top:58%;width:130px" viewBox="0 0 120 60" aria-hidden="true">' +
+      '<polyline points="8,38 34,16 58,30 84,10 112,26" fill="none" stroke="rgba(180,195,240,0.3)" stroke-width="1" stroke-dasharray="3 5"/>' +
+      '<g fill="#cfd8f2"><circle cx="8" cy="38" r="1.8"/><circle cx="34" cy="16" r="1.6"/><circle cx="58" cy="30" r="2"/><circle cx="84" cy="10" r="1.6"/><circle cx="112" cy="26" r="1.9"/></g>' +
+    '</svg>';
+  host.innerHTML = '<div class="milkyway"></div><div class="starlayer far">' + far + '</div><div class="starlayer near">' + near + constel + '</div>';
 
   var farEl = host.querySelector('.starlayer.far'), nearEl = host.querySelector('.starlayer.near'), raf = 0;
   function parallax() {
@@ -2359,7 +2422,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
   }, { passive: true });
 
   function scheduleShot(first) {
-    setTimeout(fireShot, first ? (25000 + Math.random() * 20000) : (110000 + Math.random() * 130000));
+    setTimeout(fireShot, first ? (9000 + Math.random() * 9000) : (70000 + Math.random() * 80000));
   }
   function fireShot() {
     try {
