@@ -7,7 +7,7 @@
 <meta name="description" content="Juliette Gudknecht is a federal data scientist and data-governance professional who makes public data clear, accessible, and honest.">
 <meta name="theme-color" content="#0a0d1c">
 <link rel="canonical" href="https://juliettegudknecht-code.github.io/portfolio/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23ec5fa8'/%3E%3Cstop offset='0.55' stop-color='%239b6bd8'/%3E%3Cstop offset='1' stop-color='%234f92c4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M6 34 C 10 31 12.5 30 15.5 28 C 19 25.5 22 23 25 20.5' fill='none' stroke='url(%23g)' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='6' cy='34' r='3' fill='%23ec5fa8'/%3E%3Ccircle cx='15.5' cy='28' r='2.8' fill='%239b6bd8'/%3E%3Cg transform='translate(28 15) rotate(45)'%3E%3Cpath d='M-1.6 5.5 C -1.1 9 1.1 9 1.6 5.5 Z' fill='%23f0824a'/%3E%3Cpath d='M-3.4 1.8 L-5.7 6.3 L-3.1 5.3 Z M3.4 1.8 L5.7 6.3 L3.1 5.3 Z' fill='none' stroke='%2324252b' stroke-width='1.8' stroke-linejoin='round'/%3E%3Cpath d='M0 -9 C 2.5 -6.8 3.6 -2.2 3.4 3 C 3.3 4.6 2.2 5.7 0 5.7 C -2.2 5.7 -3.3 4.6 -3.4 3 C -3.6 -2.2 -2.5 -6.8 0 -9 Z' fill='%23fff' stroke='%2324252b' stroke-width='2' stroke-linejoin='round'/%3E%3Ccircle cx='0' cy='-2.2' r='1.8' fill='none' stroke='%2324252b' stroke-width='1.7'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23ec5fa8'/%3E%3Cstop offset='0.55' stop-color='%239b6bd8'/%3E%3Cstop offset='1' stop-color='%234f92c4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M6 34 C 10 31 12.5 30 15.5 28 C 19 25.5 22 23 25 20.5' fill='none' stroke='url(%23g)' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='6' cy='34' r='3' fill='%23ec5fa8'/%3E%3Ccircle cx='15.5' cy='28' r='2.8' fill='%239b6bd8'/%3E%3Cg transform='translate(28 15) rotate(45)'%3E%3Cpath d='M-1.6 5.5 C -1.1 9 1.1 9 1.6 5.5 Z' fill='%23ec5fa8'/%3E%3Cpath d='M-3.4 1.8 L-5.7 6.3 L-3.1 5.3 Z M3.4 1.8 L5.7 6.3 L3.1 5.3 Z' fill='none' stroke='%2324252b' stroke-width='1.8' stroke-linejoin='round'/%3E%3Cpath d='M0 -9 C 2.5 -6.8 3.6 -2.2 3.4 3 C 3.3 4.6 2.2 5.7 0 5.7 C -2.2 5.7 -3.3 4.6 -3.4 3 C -3.6 -2.2 -2.5 -6.8 0 -9 Z' fill='%23fff' stroke='%2324252b' stroke-width='2' stroke-linejoin='round'/%3E%3Ccircle cx='0' cy='-2.2' r='1.8' fill='none' stroke='%2324252b' stroke-width='1.7'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://juliettegudknecht-code.github.io/portfolio/">
 <meta property="og:title" content="Juliette Gudknecht · Federal Data Scientist and Data Steward">
@@ -335,7 +335,7 @@ nav.site a.active { color: var(--ink); text-decoration: underline; text-underlin
 
 /* Scroll progress */
 .scrollbar { position: absolute; left: 0; right: 0; bottom: -2px; height: 3px; pointer-events: none; }
-#scrollFill { display: block; height: 100%; width: 100%; transform: scaleX(0); transform-origin: left; background: linear-gradient(90deg, #ec5fa8, #b07fd8, #6fa8dc, #f0b25e); }
+#scrollFill { display: block; height: 100%; width: 100%; transform: scaleX(0); transform-origin: left; background: linear-gradient(90deg, #ec5fa8, #b07fd8, #6fa8dc); }
 
 /* Rail doodles sketch themselves in */
 .rail-spot :is(use, path:not(.rk-exhaust), circle) { stroke-dasharray: 90; stroke-dashoffset: 0; }
@@ -883,7 +883,31 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
 .shootingstar { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: #fff; box-shadow: 0 0 7px 2px rgba(255, 255, 255, 0.85); opacity: 0; pointer-events: none; left: -6%; animation: shoot 1.7s ease-in forwards; }
 .shootingstar::before { content: ''; position: absolute; top: 50%; right: 0; width: 130px; height: 1.6px; transform: translateY(-50%); background: linear-gradient(270deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0)); }
 @keyframes shoot { 0% { opacity: 0; transform: translate(0, 0) rotate(14deg); } 10% { opacity: 1; } 86% { opacity: 1; } 100% { opacity: 0; transform: translate(112vw, 300px) rotate(14deg); } }
+
+/* palette: pink, purple, blue only */
+.stat:nth-child(4) b, .c-amber { color: #8f9df0; }
+.ft-amber[aria-selected="true"] { color: #8f9df0; }
+.pv-amber { background: #191d3c; border-color: #3d4880; color: #8f9df0; }
+.case { background: #232a52; border-color: #3d4880; box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4); }
+.case .zip { border-top-color: #5a67a8; }
+.case::after { border-color: #5a67a8; background: #2e3766; }
+
+/* no squiggly watermark behind the intro */
+.intro-bg { display: none !important; }
+
+/* music button, stacked above the rocket */
+.music-btn { position: fixed; left: 18px; bottom: 74px; z-index: 90; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--border); background: var(--card); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55); touch-action: manipulation; }
+.music-btn:hover { border-color: var(--pink); }
+.music-btn svg { width: 20px; height: 20px; }
+.music-btn .meq { display: none; align-items: flex-end; gap: 2.5px; height: 16px; }
+.music-btn .meq i { width: 3px; background: var(--pink-deep); height: 40%; border-radius: 1px; animation: meqB 0.9s ease-in-out infinite; }
+.music-btn .meq i:nth-child(2) { animation-delay: 0.28s; }
+.music-btn .meq i:nth-child(3) { animation-delay: 0.52s; }
+@keyframes meqB { 0%, 100% { height: 30%; } 50% { height: 100%; } }
+.music-btn.playing .m-note { display: none; }
+.music-btn.playing .meq { display: flex; }
 }
+@media print { .music-btn { display: none !important; } }
 </style>
 </head>
 <body>
@@ -898,7 +922,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
       <stop offset="0" stop-color="#ec5fa8"></stop>
       <stop offset="0.35" stop-color="#b07fd8"></stop>
       <stop offset="0.7" stop-color="#6fa8dc"></stop>
-      <stop offset="1" stop-color="#f0b25e"></stop>
+      <stop offset="1" stop-color="#7d8df0"></stop>
     </linearGradient>
     <linearGradient id="dmg" x1="0" y1="1" x2="1" y2="0">
       <stop offset="0" stop-color="#ec5fa8"></stop>
@@ -1068,7 +1092,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
           <stop offset="0" stop-color="#ec5fa8"></stop>
           <stop offset="0.35" stop-color="#b07fd8"></stop>
           <stop offset="0.7" stop-color="#6fa8dc"></stop>
-          <stop offset="1" stop-color="#f0b25e"></stop>
+          <stop offset="1" stop-color="#7d8df0"></stop>
         </linearGradient>
         <clipPath id="igclip"><rect class="ig-cliprect" x="38" y="10" width="0" height="116"></rect></clipPath>
       </defs>
@@ -1111,7 +1135,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
         <circle class="ig-dot ig-d9" cx="238" cy="28" r="2.5" fill="#3f7ab0"></circle>
         <circle class="ig-dot ig-dlast" cx="131" cy="49" r="3.4" fill="#b34576"></circle>
       </g>
-      <g transform="translate(258 6) scale(0.75)"><g class="ig-markwrap"><g transform="translate(19 13) rotate(45) scale(1.5)"><g class="ig-rocket"><path d="M-1.4 5 C -1 8 1 8 1.4 5 Z" fill="#f0824a"></path><path d="M-3 1.6 L-5 5.6 L-2.8 4.7 Z M3 1.6 L5 5.6 L2.8 4.7 Z" fill="none" stroke="#24252b" stroke-width="1.6" stroke-linejoin="round"></path><path d="M0 -8 C 2.2 -6 3.2 -2 3 2.6 C 2.9 4 2 5 0 5 C -2 5 -2.9 4 -3 2.6 C -3.2 -2 -2.2 -6 0 -8 Z" fill="#fff" stroke="#24252b" stroke-width="1.8" stroke-linejoin="round"></path><circle cx="0" cy="-2" r="1.6" fill="none" stroke="#24252b" stroke-width="1.5"></circle></g></g></g></g>
+      <g transform="translate(258 6) scale(0.75)"><g class="ig-markwrap"><g transform="translate(19 13) rotate(45) scale(1.5)"><g class="ig-rocket"><path d="M-1.4 5 C -1 8 1 8 1.4 5 Z" fill="#ec5fa8"></path><path d="M-3 1.6 L-5 5.6 L-2.8 4.7 Z M3 1.6 L5 5.6 L2.8 4.7 Z" fill="none" stroke="#24252b" stroke-width="1.6" stroke-linejoin="round"></path><path d="M0 -8 C 2.2 -6 3.2 -2 3 2.6 C 2.9 4 2 5 0 5 C -2 5 -2.9 4 -3 2.6 C -3.2 -2 -2.2 -6 0 -8 Z" fill="#fff" stroke="#24252b" stroke-width="1.8" stroke-linejoin="round"></path><circle cx="0" cy="-2" r="1.6" fill="none" stroke="#24252b" stroke-width="1.5"></circle></g></g></g></g>
       <g class="ig-plane"><path d="M0 0 L20 -8 L10 7 L7 1 Z M20 -8 L7 1" fill="#fff" stroke="#54565e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path></g>
       <g class="ig-pencil"><g transform="scale(0.82)"><path d="M0 0 L20 -8 L10 7 L7 1 Z M20 -8 L7 1" fill="#fff" stroke="#54565e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path></g></g>
     </svg>
@@ -1125,7 +1149,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
   <div class="wrap header-inner">
     <a class="brand" href="#top" aria-label="Juliette Gudknecht, back to top">
       <svg viewBox="0 0 48 40" aria-hidden="true" focusable="false">
-        <path d="M7 33 C 11 30.5 13 29.5 15.5 28 C 18.5 26 21 24 23.5 22" fill="none" stroke="url(#dmg)" stroke-width="2.6" stroke-linecap="round"></path><circle cx="7" cy="33" r="2.7" fill="#ec5fa8"></circle><circle cx="15.5" cy="28" r="2.5" fill="#9b6bd8"></circle><g transform="translate(30 16) rotate(45)"><path d="M-1.4 5 C -1 8 1 8 1.4 5 Z" fill="#f0824a"></path><path d="M-3 1.6 L-5 5.6 L-2.8 4.7 Z M3 1.6 L5 5.6 L2.8 4.7 Z" fill="none" stroke="#24252b" stroke-width="1.6" stroke-linejoin="round"></path><path d="M0 -8 C 2.2 -6 3.2 -2 3 2.6 C 2.9 4 2 5 0 5 C -2 5 -2.9 4 -3 2.6 C -3.2 -2 -2.2 -6 0 -8 Z" fill="#fff" stroke="#24252b" stroke-width="1.8" stroke-linejoin="round"></path><circle cx="0" cy="-2" r="1.6" fill="none" stroke="#24252b" stroke-width="1.5"></circle></g>
+        <path d="M7 33 C 11 30.5 13 29.5 15.5 28 C 18.5 26 21 24 23.5 22" fill="none" stroke="url(#dmg)" stroke-width="2.6" stroke-linecap="round"></path><circle cx="7" cy="33" r="2.7" fill="#ec5fa8"></circle><circle cx="15.5" cy="28" r="2.5" fill="#9b6bd8"></circle><g transform="translate(30 16) rotate(45)"><path d="M-1.4 5 C -1 8 1 8 1.4 5 Z" fill="#ec5fa8"></path><path d="M-3 1.6 L-5 5.6 L-2.8 4.7 Z M3 1.6 L5 5.6 L2.8 4.7 Z" fill="none" stroke="#24252b" stroke-width="1.6" stroke-linejoin="round"></path><path d="M0 -8 C 2.2 -6 3.2 -2 3 2.6 C 2.9 4 2 5 0 5 C -2 5 -2.9 4 -3 2.6 C -3.2 -2 -2.2 -6 0 -8 Z" fill="#fff" stroke="#24252b" stroke-width="1.8" stroke-linejoin="round"></path><circle cx="0" cy="-2" r="1.6" fill="none" stroke="#24252b" stroke-width="1.5"></circle></g>
       </svg>
       Juliette Gudknecht
     </a>
@@ -1137,7 +1161,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
         <a href="#education">Education</a>
         <a href="#projects">Work</a>
         <a href="#publications">Publications</a>
-        <a href="#honors">Honors</a>
+        <a href="#honors">Awards</a>
         <a href="#speaking">Speaking</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -1157,7 +1181,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
       <div class="hero-grid">
         <div class="hero-copy">
           <div class="print-name">Juliette Gudknecht</div>
-          <svg class="hero-sig" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><path d="M7 33 C 11 30.5 13 29.5 15.5 28 C 18.5 26 21 24 23.5 22" fill="none" stroke="url(#dmg)" stroke-width="2.6" stroke-linecap="round"></path><circle cx="7" cy="33" r="2.7" fill="#ec5fa8"></circle><circle cx="15.5" cy="28" r="2.5" fill="#9b6bd8"></circle><g transform="translate(30 16) rotate(45)"><path d="M-1.4 5 C -1 8 1 8 1.4 5 Z" fill="#f0824a"></path><path d="M-3 1.6 L-5 5.6 L-2.8 4.7 Z M3 1.6 L5 5.6 L2.8 4.7 Z" fill="none" stroke="#24252b" stroke-width="1.6" stroke-linejoin="round"></path><path d="M0 -8 C 2.2 -6 3.2 -2 3 2.6 C 2.9 4 2 5 0 5 C -2 5 -2.9 4 -3 2.6 C -3.2 -2 -2.2 -6 0 -8 Z" fill="#fff" stroke="#24252b" stroke-width="1.8" stroke-linejoin="round"></path><circle cx="0" cy="-2" r="1.6" fill="none" stroke="#24252b" stroke-width="1.5"></circle></g></svg>
+          <svg class="hero-sig" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><path d="M7 33 C 11 30.5 13 29.5 15.5 28 C 18.5 26 21 24 23.5 22" fill="none" stroke="url(#dmg)" stroke-width="2.6" stroke-linecap="round"></path><circle cx="7" cy="33" r="2.7" fill="#ec5fa8"></circle><circle cx="15.5" cy="28" r="2.5" fill="#9b6bd8"></circle><g transform="translate(30 16) rotate(45)"><path d="M-1.4 5 C -1 8 1 8 1.4 5 Z" fill="#ec5fa8"></path><path d="M-3 1.6 L-5 5.6 L-2.8 4.7 Z M3 1.6 L5 5.6 L2.8 4.7 Z" fill="none" stroke="#24252b" stroke-width="1.6" stroke-linejoin="round"></path><path d="M0 -8 C 2.2 -6 3.2 -2 3 2.6 C 2.9 4 2 5 0 5 C -2 5 -2.9 4 -3 2.6 C -3.2 -2 -2.2 -6 0 -8 Z" fill="#fff" stroke="#24252b" stroke-width="1.8" stroke-linejoin="round"></path><circle cx="0" cy="-2" r="1.6" fill="none" stroke="#24252b" stroke-width="1.5"></circle></g></svg>
           <h1>Data that counts <em>everyone</em>.</h1>
       <p class="lede">I'm a federal data scientist and published researcher. I make public data clear, accessible, and honest.</p>
       <p class="byline">Federal data scientist and data steward · MS Applied Statistics, Columbia University</p>
@@ -1416,11 +1440,11 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
             <button class="pencil" role="tab" id="skt-1" aria-controls="sk-1" aria-selected="true" style="--pc:#b34576"><span class="pencil-name">Governance</span></button>
             <button class="pencil" role="tab" id="skt-2" aria-controls="sk-2" aria-selected="false" tabindex="-1" style="--pc:#7a5fc0"><span class="pencil-name">Languages</span></button>
             <button class="pencil" role="tab" id="skt-3" aria-controls="sk-3" aria-selected="false" tabindex="-1" style="--pc:#3f7ab0"><span class="pencil-name">AI &amp; GenAI</span></button>
-            <button class="pencil" role="tab" id="skt-4" aria-controls="sk-4" aria-selected="false" tabindex="-1" style="--pc:#b0761f"><span class="pencil-name">Machine learning</span></button>
-            <button class="pencil" role="tab" id="skt-5" aria-controls="sk-5" aria-selected="false" tabindex="-1" style="--pc:#3f9e94"><span class="pencil-name">Platforms</span></button>
-            <button class="pencil" role="tab" id="skt-6" aria-controls="sk-6" aria-selected="false" tabindex="-1" style="--pc:#c9573f"><span class="pencil-name">Web</span></button>
+            <button class="pencil" role="tab" id="skt-4" aria-controls="sk-4" aria-selected="false" tabindex="-1" style="--pc:#d1568f"><span class="pencil-name">Machine learning</span></button>
+            <button class="pencil" role="tab" id="skt-5" aria-controls="sk-5" aria-selected="false" tabindex="-1" style="--pc:#5566c9"><span class="pencil-name">Platforms</span></button>
+            <button class="pencil" role="tab" id="skt-6" aria-controls="sk-6" aria-selected="false" tabindex="-1" style="--pc:#8f3a68"><span class="pencil-name">Web</span></button>
             <button class="pencil" role="tab" id="skt-7" aria-controls="sk-7" aria-selected="false" tabindex="-1" style="--pc:#8455a0"><span class="pencil-name">Accessibility</span></button>
-            <button class="pencil" role="tab" id="skt-8" aria-controls="sk-8" aria-selected="false" tabindex="-1" style="--pc:#6f9350"><span class="pencil-name">Research</span></button>
+            <button class="pencil" role="tab" id="skt-8" aria-controls="sk-8" aria-selected="false" tabindex="-1" style="--pc:#6b87d8"><span class="pencil-name">Research</span></button>
           </div>
           <div class="case" aria-hidden="true"><span class="zip"></span></div>
         </div>
@@ -1758,7 +1782,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
 
   <section id="honors" class="reveal">
     <div class="wrap sec-grid">
-      <h2 class="sec-label">Honors &amp; press<svg class="doodle rail-spot rs-honors c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-flag"></use></svg></h2>
+      <h2 class="sec-label">Awards &amp; press<svg class="doodle rail-spot rs-honors c-amber" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-flag"></use></svg></h2>
       <div class="sec-body">
         <div class="edu-row">
           <div class="edu"><b>Public Humanities Graduate Fellowship</b><span>Society of Fellows &amp; Heyman Center, Columbia University &middot; 2023&ndash;24</span>
@@ -1905,11 +1929,15 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
 
 <button class="to-top" id="toTop" type="button" aria-label="Back to top" title="Back to top">
   <svg viewBox="0 0 24 34" aria-hidden="true" focusable="false" class="tt-rocket">
-    <path class="tt-flame" d="M12 25 L12 31" fill="none" stroke="#f0824a" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2.5 3"></path>
+    <path class="tt-flame" d="M12 25 L12 31" fill="none" stroke="#ec5fa8" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2.5 3"></path>
     <path d="M8.4 16.5 L5.4 22.5 L8.7 21 Z M15.6 16.5 L18.6 22.5 L15.3 21 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
     <path d="M12 3.2 C15.1 6.3 16.7 12.2 16.5 18.6 C16.4 20.9 15 22.4 12 22.4 C9 22.4 7.6 20.9 7.5 18.6 C7.3 12.2 8.9 6.3 12 3.2 Z" fill="#fff" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
     <circle cx="12" cy="11" r="2.1" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
   </svg>
+</button>
+<button class="music-btn" id="musicBtn" type="button" aria-pressed="false" aria-label="Play music" title="Music">
+  <svg class="m-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg>
+  <span class="meq" aria-hidden="true"><i></i><i></i><i></i></span>
 </button>
 <button class="a11y-fab" id="a11yFab" aria-expanded="false" aria-controls="a11yPanel">
   <svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-person"></use></svg>
@@ -2348,6 +2376,54 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
     scheduleShot(false);
   }
   scheduleShot(true);
+})();
+</script>
+<script>
+/* Music: hidden YouTube player, toggled by the button above the rocket.
+   Starts on click (browsers require a gesture) and fades out on pause. */
+(function () {
+  var btn = document.getElementById('musicBtn');
+  if (!btn) return;
+  var player = null, ready = false, want = false, fade = null, on = false;
+  function make() {
+    if (player) return;
+    if (!document.getElementById('ytm')) {
+      var h = document.createElement('div'); h.id = 'ytm';
+      h.style.cssText = 'position:fixed;left:-9999px;width:0;height:0;overflow:hidden;';
+      document.body.appendChild(h);
+    }
+    player = new YT.Player('ytm', { height: '0', width: '0', videoId: 'zp7NtW_hKJI',
+      playerVars: { autoplay: 0, controls: 0, playsinline: 1, rel: 0, loop: 1, playlist: 'zp7NtW_hKJI' },
+      events: { onReady: function () { ready = true; if (want) play(); } } });
+  }
+  function ensure() {
+    if (window.YT && window.YT.Player) { make(); return; }
+    var prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function () { if (prev) prev(); make(); };
+    if (!document.getElementById('ytapi')) {
+      var s = document.createElement('script'); s.id = 'ytapi';
+      s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s);
+    }
+  }
+  function play() { try { if (fade) { clearInterval(fade); fade = null; } player.setVolume(60); player.unMute(); player.playVideo(); } catch (e) {} }
+  btn.addEventListener('click', function () {
+    on = !on;
+    btn.classList.toggle('playing', on);
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.setAttribute('aria-label', on ? 'Pause music' : 'Play music');
+    if (on) { want = true; ensure(); if (ready) play(); }
+    else {
+      want = false;
+      try {
+        if (player && ready) {
+          var v = 60; if (fade) clearInterval(fade);
+          fade = setInterval(function () { v -= 7;
+            try { if (v > 0) { player.setVolume(v); } else { clearInterval(fade); fade = null; player.pauseVideo(); player.setVolume(60); } }
+            catch (e) { clearInterval(fade); fade = null; } }, 80);
+        }
+      } catch (e) {}
+    }
+  });
 })();
 </script>
 </body>
