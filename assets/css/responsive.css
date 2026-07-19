@@ -1,0 +1,74 @@
+/* Responsive: tablet and mobile adjustments */
+@media (max-width: 960px) {
+  .rail-spot { display: none; }
+  .contact-planet { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-photo { max-width: 420px; }
+  .sec-grid { grid-template-columns: 1fr; gap: 18px; }
+  .sec-label { position: static; }
+  .edu-row { grid-template-columns: 1fr; gap: 0; }
+  .edu-row .edu { padding: 12px 0; border-bottom: 1px solid var(--pink-soft); }
+  .edu-row .edu:first-child { padding-top: 2px; }
+  .edu-row .edu:last-child { border-bottom: none; }
+  .talk.featured { grid-template-columns: 1fr; gap: 0; }
+  .talk.featured .talk-title { margin-top: 14px; }
+  .talk.featured .talk-desc { max-width: 660px; }
+}
+@media (max-width: 720px) {
+  .hero { padding: 52px 0 0; }
+  .hero-sig { width: 64px; margin-bottom: 20px; }
+  .plane { display: none; }
+  section { padding: 64px 0 0; }
+  .stats { margin-top: 48px; }
+  .stat { flex: 1 1 40%; border-left: none; padding: 16px 20px 12px 0; }
+  .stat b { font-size: 32px; }
+  .job, .skills .row { grid-template-columns: 1fr; }
+  .jobfold summary { grid-template-columns: 1fr; }
+  .jobfold .jbody { margin-left: 0; }
+  .job .years { padding-top: 0; font-size: 14px; }
+  .talks { grid-template-columns: 1fr; gap: 30px; }
+  .folder-body { padding: 4px 18px 10px; }
+  .folder-pubs .folder-body { padding: 4px 16px 10px; }
+  .folder-pubs .pub .pub-title { font-size: 16.5px; }
+  .folder-edu .folder-body { padding: 14px 16px; }
+  .diplomas { grid-template-columns: 1fr; gap: 16px; }
+  .folder-speaking .folder-body { padding: 14px 16px; }
+  .pencils { gap: 5px; padding: 0 6px; }
+  .pencil { width: 30px; --ph: 150px; }
+  .pencil::before { border-left-width: 14px; border-right-width: 14px; }
+  .pencil-name { font-size: 10.5px; letter-spacing: 0.03em; padding: 9px 0 0; }
+  .pencils .pencil:nth-child(1){--ph:152px} .pencils .pencil:nth-child(2){--ph:148px} .pencils .pencil:nth-child(3){--ph:144px} .pencils .pencil:nth-child(4){--ph:172px}
+  .pencils .pencil:nth-child(5){--ph:146px} .pencils .pencil:nth-child(6){--ph:142px} .pencils .pencil:nth-child(7){--ph:162px} .pencils .pencil:nth-child(8){--ph:146px}
+  .case { height: 68px; margin-top: -22px; border-radius: 15px 13px 12px 14px; }
+  .tl-node { flex-basis: 150px; width: 150px; padding-right: 14px; }
+  .tl-track::before { top: 50px; }
+  .tl-pane h3 { font-size: 18px; }
+  .folder-tabs { gap: 2px; padding: 0 5px; row-gap: 6px; }
+  .project { grid-template-columns: 64px minmax(0, 1fr); gap: 14px; }
+  .shots { grid-template-columns: 1fr; }
+  .pv { width: 64px; height: 64px; }
+  .pv .doodle { width: 34px; height: 34px; }
+  .pv .pv-inf { width: 42px; }
+  .ftab { font-size: 12px; padding: 6px 7px 9px; }
+  .ftab[aria-selected="true"] { padding-bottom: 12px; }
+  .space-dust { display: none; }
+  .contact { padding-bottom: 72px; }
+}
+
+/* ===== Mobile pass ===== */
+
+/* ===== Mobile pass: header scrolls away, smaller floating controls ===== */
+@media (max-width: 720px) {
+  header { position: static; }
+  header .wrap { padding: 13px 20px; }
+  .brand { font-size: 16px; }
+  .header-right { gap: 10px; }
+  nav.site { font-size: 13px; gap: 2px 15px; }
+  .resume-btn { font-size: 13px; padding: 7px 12px; }
+  .music-btn { width: 40px; height: 40px; bottom: 64px; left: 14px; }
+  .music-btn svg { width: 18px; height: 18px; }
+  .to-top { width: 40px; height: 40px; left: 14px; bottom: 14px; }
+  .to-top .tt-rocket { width: 19px; }
+  .a11y-fab { font-size: 0; gap: 0; width: 44px; height: 44px; padding: 0; border-radius: 50%; justify-content: center; right: 14px; bottom: 14px; }
+  .a11y-fab .doodle { width: 22px; height: 22px; }
+}
