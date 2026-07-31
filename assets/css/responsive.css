@@ -4,6 +4,7 @@
   .contact-planet { display: none; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-photo { max-width: 420px; }
+  .hero-photo::before { inset: 16px -12px 40px 16px; }
   .sec-grid { grid-template-columns: 1fr; gap: 18px; }
   .sec-label { position: static; }
   .edu-row { grid-template-columns: 1fr; gap: 0; }
@@ -24,7 +25,7 @@
   .plane { display: none; }
   section { padding: 64px 0 0; }
   .stats { margin-top: 48px; }
-  .stat { flex: 1 1 40%; border-left: none; padding: 16px 20px 12px 0; }
+  .stat { flex: 1 1 40%; padding: 16px; }
   .stat b { font-size: 32px; }
   .job, .skills .row { grid-template-columns: 1fr; }
   .jobfold summary { grid-template-columns: 1fr; }
@@ -62,6 +63,7 @@
   .case-study.case-primary { grid-column: auto; }
   .case-primary .case-visual, .case-visual { min-height: 280px; }
   .case-primary .case-copy, .case-copy { padding: 24px; }
+  .case-study:hover { transform: none; }
   .capability-grid { grid-template-columns: 1fr; }
 }
 
