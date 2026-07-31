@@ -832,13 +832,15 @@ dialog.collection-dialog { max-width: 600px; padding: 34px; border-color: #44517
 .hero { position: relative; isolation: isolate; overflow: hidden; }
 .hero::before { content: ''; position: absolute; z-index: -1; right: -9vw; top: -110px; width: 660px; height: 660px; border-radius: 50%; background: radial-gradient(circle, rgba(119, 174, 222, 0.16), rgba(87, 107, 171, 0.08) 38%, transparent 68%); }
 .hero-grid { position: relative; isolation: isolate; }
-.hero-grid::after { content: ''; position: absolute; z-index: -1; right: 16px; top: 13%; width: 320px; height: 54%; border: 1px solid rgba(119, 174, 222, 0.46); transform: rotate(-1deg); }
+.hero-grid::after { content: ''; position: absolute; z-index: -1; right: 0; top: 8%; width: 352px; height: 71%; border: 1px solid rgba(119, 174, 222, 0.4); transform: rotate(-1deg); }
 .hero-copy { position: relative; z-index: 3; }
 .hero h1 { max-width: 760px; font-family: var(--hand); font-size: clamp(50px, 6.5vw, 84px); font-style: normal; font-weight: 700; line-height: 0.94; letter-spacing: -0.045em; }
 .hero h1 em { font-style: normal; font-weight: inherit; }
 .hero .lede { position: relative; z-index: 3; }
-.hero-shuttle { position: absolute; z-index: 2; right: 214px; top: 50%; width: 330px; height: 520px; margin: 0; transform: translateY(-50%); pointer-events: none; }
+.hero-visual { position: relative; min-height: 570px; isolation: isolate; }
+.hero-shuttle { position: absolute; z-index: 3; left: -98px; bottom: 42px; width: 245px; height: 260px; margin: 0; pointer-events: none; }
 .hero-shuttle-art {
+  --shuttle-base-rotate: -52deg;
   --shuttle-scroll-y: 0px;
   --shuttle-scroll-rotate: 0deg;
   --shuttle-hover-x: 0px;
@@ -848,11 +850,11 @@ dialog.collection-dialog { max-width: 600px; padding: 34px; border-color: #44517
   position: absolute;
   left: 50%;
   top: 48%;
-  width: 480px;
+  width: 310px;
   transform: translate(
     calc(-50% + var(--shuttle-hover-x)),
     calc(-50% + var(--shuttle-scroll-y) + var(--shuttle-hover-y))
-  ) rotate(calc(-90deg + var(--shuttle-scroll-rotate) + var(--shuttle-hover-rotate))) scale(var(--shuttle-scale));
+  ) rotate(calc(var(--shuttle-base-rotate) + var(--shuttle-scroll-rotate) + var(--shuttle-hover-rotate))) scale(var(--shuttle-scale));
   transform-origin: center;
   transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
@@ -860,13 +862,12 @@ dialog.collection-dialog { max-width: 600px; padding: 34px; border-color: #44517
 }
 .hero-shuttle img { display: block; width: 100%; height: auto; filter: drop-shadow(0 18px 28px rgba(4, 7, 18, 0.48)); opacity: 0.92; transition: filter 280ms ease, opacity 280ms ease; }
 .hero-shuttle-art.is-hovered img { filter: drop-shadow(0 25px 34px rgba(80, 124, 202, 0.58)); opacity: 1; }
-.hero-shuttle figcaption { position: absolute; left: 50%; bottom: 0; width: max-content; max-width: 290px; transform: translateX(-50%); color: var(--faint); font-size: 10.5px; line-height: 1.35; text-align: center; pointer-events: auto; }
-.hero-shuttle figcaption a { color: #9dbfe3; text-decoration: underline; text-underline-offset: 3px; }
-.hero-photo { position: relative; isolation: isolate; }
-.hero-photo { z-index: 1; transform: translateX(-26px) rotate(0.6deg); }
+.hero-photo { position: absolute; z-index: 1; top: 20px; right: 0; width: 350px; margin: 0; isolation: isolate; transform: rotate(0.6deg); }
 .hero-photo::before { content: ''; position: absolute; inset: 22px -18px 36px 22px; z-index: -1; border: 1px solid rgba(171, 141, 240, 0.52); background: rgba(95, 130, 179, 0.08); box-shadow: 18px 18px 50px rgba(0, 0, 0, 0.28); }
 .hero-photo img { border: 1px solid rgba(205, 214, 245, 0.24); border-radius: 0; clip-path: polygon(0 0, 100% 2%, 96% 100%, 3% 97%); box-shadow: 0 20px 55px rgba(0, 0, 0, 0.34); filter: saturate(0.82) contrast(1.03); }
-.hero-photo figcaption { padding-left: 3px; }
+.hero-visual-caption { position: absolute; z-index: 4; right: 0; bottom: 0; width: 350px; padding-top: 10px; border-top: 1px solid rgba(119, 174, 222, 0.3); color: var(--faint); font-size: 10.5px; line-height: 1.45; }
+.hero-visual-caption span { display: block; }
+.hero-visual-caption a { color: #9dbfe3; text-decoration: underline; text-underline-offset: 3px; }
 .hero .actions { gap: 18px; }
 .hero .actions .btn, .hero .actions .btn.primary { padding: 0 0 3px; border: 0; border-radius: 0; background: transparent; color: #d9dff7; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
 .hero .actions .btn.primary { color: #ef9ac4; }
@@ -925,6 +926,11 @@ html[data-a11y~="motion"] .skill-rocket-traveler { animation: none; offset-dista
 .logo-python { height: 31px; }
 .logo-r { height: 34px; }
 .logo-html { height: 34px; }
+.logo-powerbi { height: 35px; }
+.logo-excel { height: 31px; }
+.logo-looker { height: 32px; }
+.logo-css { height: 32px; }
+.logo-javascript { height: 31px; }
 .skill-stop:nth-of-type(odd) .skill-toolmarks { justify-content: flex-end; }
 .skill-mark { display: block; width: 28px; height: 28px; margin-bottom: 10px; }
 .skill-stop:nth-of-type(odd) .skill-mark { margin-left: auto; }

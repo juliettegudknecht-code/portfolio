@@ -3,10 +3,12 @@
   .rail-spot { display: none; }
   .contact-planet { display: none; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-shuttle { position: relative; right: auto; top: auto; grid-column: 1; width: 100%; height: 390px; transform: none; }
-  .hero-shuttle-art { top: 46%; width: 450px; }
-  .hero-photo { max-width: 420px; transform: none; }
-  .hero-grid::after { right: auto; left: 34px; top: auto; bottom: 28px; width: 340px; max-width: calc(100% - 48px); height: 310px; }
+  .hero-visual { width: min(100%, 540px); min-height: 550px; margin: 0 auto; }
+  .hero-shuttle { left: -24px; bottom: 40px; width: 230px; height: 245px; }
+  .hero-shuttle-art { --shuttle-base-rotate: -48deg; top: 46%; width: 290px; }
+  .hero-photo { top: 10px; right: 0; width: min(78%, 380px); max-width: none; transform: rotate(0.4deg); }
+  .hero-visual-caption { width: min(78%, 380px); }
+  .hero-grid::after { right: 3%; left: auto; top: auto; bottom: 54px; width: min(72%, 350px); max-width: none; height: 390px; }
   .hero-photo::before { inset: 16px -12px 40px 16px; }
   .sec-grid { grid-template-columns: 1fr; gap: 18px; }
   .sec-label { position: static; }
@@ -25,8 +27,11 @@
 }
 @media (max-width: 720px) {
   .hero { padding: 52px 0 0; }
-  .hero-shuttle { height: 330px; margin: -18px 0 -8px; }
-  .hero-shuttle-art { width: 390px; }
+  .hero-visual { min-height: 475px; }
+  .hero-shuttle { left: -22px; bottom: 34px; width: 185px; height: 205px; }
+  .hero-shuttle-art { width: 238px; }
+  .hero-photo { width: 82%; }
+  .hero-visual-caption { width: 82%; font-size: 9.5px; }
   .hero-sig { width: 64px; margin-bottom: 20px; }
   .plane { display: none; }
   section { padding: 64px 0 0; }
