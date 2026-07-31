@@ -815,7 +815,7 @@ html[data-a11y~="motion"] .case-study:hover { transform: none; }
 .skill-path { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr); grid-template-rows: repeat(4, minmax(150px, auto)); align-items: center; }
 .skill-route { position: absolute; left: 50%; top: 4px; bottom: 4px; width: 96px; height: calc(100% - 8px); transform: translateX(-50%); overflow: visible; }
 .skill-route > path { fill: none; stroke: #6574b5; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 2 7; opacity: 0.7; }
-.skill-rocket-traveler { color: #e9ecf7; offset-path: path("M60 8 C 25 92, 93 150, 60 226 C 27 302, 92 375, 59 452 C 29 525, 90 620, 60 750"); offset-rotate: auto -90deg; animation: skillRocketFlight 9s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite; filter: drop-shadow(0 0 6px rgba(171, 141, 240, 0.72)); }
+.skill-rocket-traveler { color: #e9ecf7; offset-path: path("M60 8 C 25 92, 93 150, 60 226 C 27 302, 92 375, 59 452 C 29 525, 90 620, 60 750"); offset-rotate: auto 90deg; animation: skillRocketFlight 9s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite; filter: drop-shadow(0 0 6px rgba(171, 141, 240, 0.72)); }
 .skill-rocket-traveler use { color: #e9ecf7; }
 .skill-rocket-glow { fill: rgba(171, 141, 240, 0.1); stroke: rgba(239, 154, 196, 0.34); stroke-width: 1; }
 @keyframes skillRocketFlight {
