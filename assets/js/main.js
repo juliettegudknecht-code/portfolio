@@ -230,6 +230,86 @@
     }, { rootMargin: '-40% 0px -55% 0px' });
     spyTargets.forEach(function (t) { spy.observe(t); });
   }
+
+  var collectionDialog = document.getElementById('collectionDialog');
+  if (collectionDialog) {
+    var collectionInfo = {
+      'b-child-count': {
+        part: 'IDEA Part B', title: 'Child Count',
+        description: 'Counts children ages 3 through 21 who receive special education and related services under IDEA Part B. The data support reporting by age, disability category, race and ethnicity, sex, and other characteristics.'
+      },
+      'b-environments': {
+        part: 'IDEA Part B', title: 'Educational Environments',
+        description: 'Describes where children with disabilities receive their education and how much time they spend in regular classes or other educational settings.'
+      },
+      'b-personnel': {
+        part: 'IDEA Part B · Collection I lead', title: 'Personnel',
+        description: 'Counts the teachers, related-services personnel, paraprofessionals, and other staff employed or contracted to serve children with disabilities.'
+      },
+      'b-exiting': {
+        part: 'IDEA Part B', title: 'Exiting',
+        description: 'Tracks how students ages 14 through 21 leave special education, including graduation, certificates, reaching the maximum age, dropping out, and other exit categories.'
+      },
+      'b-discipline': {
+        part: 'IDEA Part B · Collection I lead', title: 'Discipline',
+        description: 'Reports suspensions, expulsions, removals, and interim alternative educational settings involving children with disabilities. The data help show who is removed from instruction and for how long.'
+      },
+      'b-assessment': {
+        part: 'IDEA Part B', title: 'Assessment',
+        description: 'Reports participation and performance for students with disabilities in state reading, mathematics, and science assessments, including alternate assessments.'
+      },
+      'b-disputes': {
+        part: 'IDEA Part B', title: 'Dispute Resolution',
+        description: 'Counts written state complaints, mediation requests, due process complaints, hearings, and related resolution activity under IDEA Part B.'
+      },
+      'b-moe-ceis': {
+        part: 'IDEA Part B', title: 'MOE Reduction and CEIS',
+        description: 'Reports local maintenance-of-effort reductions and coordinated early intervening services, including children who receive those services and later receive special education.'
+      },
+      'c-child-count': {
+        part: 'IDEA Part C', title: 'Child Count',
+        description: 'Counts infants and toddlers from birth through age 2 who receive early-intervention services under IDEA Part C.'
+      },
+      'c-settings': {
+        part: 'IDEA Part C', title: 'Settings',
+        description: 'Shows the primary settings where infants and toddlers receive early-intervention services, such as the home, a community setting, or a program designed for children with developmental delays or disabilities.'
+      },
+      'c-exiting': {
+        part: 'IDEA Part C', title: 'Exiting',
+        description: 'Tracks children leaving IDEA Part C and their status at exit, including transition to Part B services, other programs, or no further services.'
+      },
+      'c-disputes': {
+        part: 'IDEA Part C', title: 'Dispute Resolution',
+        description: 'Counts written state complaints, mediation requests, due process complaints, hearings, and related resolution activity under IDEA Part C.'
+      }
+    };
+    var collectionPart = document.getElementById('collectionPart');
+    var collectionTitle = document.getElementById('collectionTitle');
+    var collectionDescription = document.getElementById('collectionDescription');
+    var collectionStatic = document.getElementById('collectionStatic');
+    Array.prototype.forEach.call(document.querySelectorAll('.idea-star[data-collection]'), function (star) {
+      star.addEventListener('click', function () {
+        var key = star.getAttribute('data-collection');
+        var info = collectionInfo[key];
+        if (!info) return;
+        collectionPart.textContent = info.part;
+        collectionTitle.textContent = info.title;
+        collectionDescription.textContent = info.description;
+        var isPartC = key.indexOf('c-') === 0;
+        collectionStatic.href = isPartC
+          ? 'https://data.ed.gov/dataset/idea-section-618-data-products-static-tables-part-c'
+          : 'https://data.ed.gov/dataset/idea-section-618-data-products-static-tables-part-b';
+        collectionStatic.textContent = isPartC ? 'View Part C static tables' : 'View Part B static tables';
+        collectionDialog.showModal();
+      });
+    });
+    document.getElementById('collectionClose').addEventListener('click', function () { collectionDialog.close(); });
+    collectionDialog.addEventListener('click', function (e) {
+      var r = collectionDialog.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) { collectionDialog.close(); }
+    });
+  }
+
 var ddDialog = document.getElementById('ddDialog');
   if (ddDialog) {
     document.getElementById('ddOpen').addEventListener('click', function () { ddDialog.showModal(); });

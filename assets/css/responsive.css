@@ -63,6 +63,11 @@
   .case-study.case-primary { grid-column: auto; }
   .case-primary .case-visual, .case-visual { min-height: 280px; }
   .case-primary .case-copy, .case-copy { padding: 24px; }
+  .case-dashboard .case-copy { padding: 24px; }
+  .idea-constellation { min-height: 270px; }
+  .idea-star { width: 23px; height: 23px; }
+  .idea-star.is-lead { width: 31px; height: 31px; }
+  .idea-star-label { max-width: 150px; font-size: 10.5px; }
   .case-study:hover { transform: none; }
   .skill-path { display: block; padding-left: 38px; }
   .skill-route { left: 13px; width: 34px; transform: none; }
