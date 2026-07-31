@@ -64,7 +64,11 @@
   .case-primary .case-visual, .case-visual { min-height: 280px; }
   .case-primary .case-copy, .case-copy { padding: 24px; }
   .case-study:hover { transform: none; }
-  .capability-grid { grid-template-columns: 1fr; }
+  .skill-path { display: block; padding-left: 38px; }
+  .skill-route { left: 13px; width: 34px; transform: none; }
+  .skill-stop, .skill-stop:nth-of-type(odd), .skill-stop:nth-of-type(even) { max-width: none; min-height: 168px; padding: 18px 0 24px 14px; text-align: left; transform: none; }
+  .skill-stop:nth-of-type(odd) .skill-mark { margin-left: 0; }
+  .skill-stop:nth-of-type(odd) .skill-dot, .skill-stop:nth-of-type(even) .skill-dot { left: -32px; right: auto; }
 }
 
 /* ===== Mobile pass ===== */

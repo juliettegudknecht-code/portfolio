@@ -811,11 +811,44 @@ html[data-a11y~="motion"] .case-study:hover { transform: none; }
 @keyframes meqB { 0%, 100% { height: 30%; } 50% { height: 100%; } }
 @media print { .music-btn { display: none !important; } }
 
-/* Capabilities without an interaction gate */
-.capability-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.capability-grid article { padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: rgba(17, 21, 43, 0.58); }
-.capability-grid h3 { margin: 0; font-family: var(--hand); font-size: 18px; }
-.capability-grid p { margin: 8px 0 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+/* Skills as a loose, hand-drawn data path */
+.skill-path { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr); grid-template-rows: repeat(4, minmax(150px, auto)); align-items: center; }
+.skill-route { position: absolute; left: 50%; top: 4px; bottom: 4px; width: 96px; height: calc(100% - 8px); transform: translateX(-50%); overflow: visible; }
+.skill-route > path { fill: none; stroke: #6574b5; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 2 7; opacity: 0.7; }
+.skill-rocket-traveler { color: #e9ecf7; offset-path: path("M60 8 C 25 92, 93 150, 60 226 C 27 302, 92 375, 59 452 C 29 525, 90 620, 60 750"); offset-rotate: auto -90deg; animation: skillRocketFlight 9s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite; filter: drop-shadow(0 0 6px rgba(171, 141, 240, 0.72)); }
+.skill-rocket-traveler use { color: #e9ecf7; }
+.skill-rocket-glow { fill: rgba(171, 141, 240, 0.1); stroke: rgba(239, 154, 196, 0.34); stroke-width: 1; }
+@keyframes skillRocketFlight {
+  0% { offset-distance: 0%; opacity: 0; }
+  7% { opacity: 1; }
+  48% { transform: scale(1); }
+  52% { transform: scale(1.12); }
+  93% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skill-rocket-traveler { animation: none; offset-distance: 52%; opacity: 1; }
+}
+html[data-a11y~="motion"] .skill-rocket-traveler { animation: none; offset-distance: 52%; opacity: 1; }
+.skill-stop { position: relative; max-width: 360px; padding: 18px 8px 20px; background: transparent; }
+.skill-stop:nth-of-type(odd) { grid-column: 1; justify-self: end; text-align: right; padding-right: 20px; }
+.skill-stop:nth-of-type(even) { grid-column: 3; justify-self: start; padding-left: 20px; }
+.stop-meaning { grid-row: 1; transform: rotate(-0.7deg); }
+.stop-repeat { grid-row: 2; transform: rotate(0.6deg); }
+.stop-clear { grid-row: 3; transform: rotate(-0.45deg); }
+.stop-access { grid-row: 4; transform: rotate(0.5deg); }
+.skill-stop h3 { display: inline; margin: 0; font-family: var(--hand); font-size: clamp(21px, 2.35vw, 28px); line-height: 1.2; letter-spacing: -0.025em; background-image: linear-gradient(transparent 76%, rgba(224, 122, 169, 0.32) 76%); }
+.skill-stop:nth-of-type(2) h3 { background-image: linear-gradient(transparent 76%, rgba(171, 141, 240, 0.32) 76%); }
+.skill-stop:nth-of-type(3) h3 { background-image: linear-gradient(transparent 76%, rgba(119, 174, 222, 0.32) 76%); }
+.skill-stop:nth-of-type(4) h3 { background-image: linear-gradient(transparent 76%, rgba(143, 157, 240, 0.32) 76%); }
+.skill-stop p { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.62; }
+.skill-mark { display: block; width: 28px; height: 28px; margin-bottom: 10px; }
+.skill-stop:nth-of-type(odd) .skill-mark { margin-left: auto; }
+.skill-dot { position: absolute; top: 50%; width: 12px; height: 12px; border: 3px solid var(--paper); border-radius: 50%; background: #e07aa9; box-shadow: 0 0 0 2px rgba(224, 122, 169, 0.34), 0 0 18px rgba(224, 122, 169, 0.35); }
+.skill-stop:nth-of-type(odd) .skill-dot { right: -54px; }
+.skill-stop:nth-of-type(even) .skill-dot { left: -54px; background: #ab8df0; box-shadow: 0 0 0 2px rgba(171, 141, 240, 0.34), 0 0 18px rgba(171, 141, 240, 0.35); }
+.skill-stop:nth-of-type(3) .skill-dot { background: #77aede; }
+.skill-stop:nth-of-type(4) .skill-dot { background: #8f9df0; }
 
 /* ===== Nebula atmosphere ===== */
 
