@@ -49,29 +49,95 @@
       introDone = true;
       intro.remove();
       document.documentElement.classList.remove('show-intro');
-      if (galaxy && !galaxy.classList.contains('gx-on')) gxKill();
     };
     if (document.documentElement.classList.contains('show-intro')) {
-      var galaxy = document.getElementById('galaxy');
-      var gxSkipped = false;
-      var gxKill = function () { if (galaxy) { galaxy.remove(); galaxy = null; } };
-      var startOut = function () { if (!introDone) { gxSkipped = true; intro.classList.add('intro-out'); } };
+      var startOut = function () { if (!introDone) { intro.classList.add('intro-out'); } };
       document.getElementById('introSkip').addEventListener('click', startOut);
       intro.addEventListener('click', startOut);
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') startOut(); });
       intro.addEventListener('animationend', function (e) { if (e.animationName === 'introLeave') killIntro(); });
-      intro.addEventListener('animationstart', function (e) {
-        if (e.animationName === 'introLeave' && galaxy && !gxSkipped && !introDone) {
-          galaxy.classList.add('gx-on');
-          galaxy.addEventListener('animationend', function (e2) { if (e2.animationName === 'gxVeil') gxKill(); });
-          setTimeout(gxKill, 4200);
-        }
-      });
       setTimeout(killIntro, 7000);
     } else {
       killIntro();
     }
   }
+})();
+
+/* The hero shuttle drifts with the first screen and responds to the pointer.
+   It stays still when the visitor asks for reduced motion. */
+(function () {
+  var art = document.querySelector('.hero-shuttle-art');
+  if (!art) return;
+  var hero = art.closest('.hero');
+  var root = document.documentElement;
+  var motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var finePointer = window.matchMedia ? window.matchMedia('(hover: hover) and (pointer: fine)') : null;
+  var raf = 0;
+
+  function motionOff() {
+    return (motionQuery && motionQuery.matches) ||
+      (root.getAttribute('data-a11y') || '').indexOf('motion') >= 0;
+  }
+
+  function set(name, value) {
+    art.style.setProperty(name, value);
+  }
+
+  function resetHover() {
+    art.classList.remove('is-hovered');
+    set('--shuttle-hover-x', '0px');
+    set('--shuttle-hover-y', '0px');
+    set('--shuttle-hover-rotate', '0deg');
+    set('--shuttle-scale', '1');
+  }
+
+  function resetAll() {
+    resetHover();
+    set('--shuttle-scroll-y', '0px');
+    set('--shuttle-scroll-rotate', '0deg');
+  }
+
+  function updateScroll() {
+    raf = 0;
+    if (motionOff() || !hero) {
+      resetAll();
+      return;
+    }
+    var rect = hero.getBoundingClientRect();
+    var travel = Math.max(1, Math.min(hero.offsetHeight, window.innerHeight));
+    var progress = Math.max(0, Math.min(1, -rect.top / travel));
+    var compact = window.innerWidth <= 960;
+    set('--shuttle-scroll-y', (-progress * (compact ? 32 : 58)).toFixed(1) + 'px');
+    set('--shuttle-scroll-rotate', (progress * (compact ? 4 : 7)).toFixed(2) + 'deg');
+  }
+
+  function queueScroll() {
+    if (!raf) raf = requestAnimationFrame(updateScroll);
+  }
+
+  art.addEventListener('pointerenter', function () {
+    if (motionOff() || (finePointer && !finePointer.matches)) return;
+    art.classList.add('is-hovered');
+    set('--shuttle-hover-y', '-8px');
+    set('--shuttle-scale', '1.035');
+  });
+
+  art.addEventListener('pointermove', function (event) {
+    if (motionOff() || (finePointer && !finePointer.matches)) return;
+    var rect = art.getBoundingClientRect();
+    var x = ((event.clientX - rect.left) / Math.max(1, rect.width) - 0.5) * 2;
+    var y = ((event.clientY - rect.top) / Math.max(1, rect.height) - 0.5) * 2;
+    set('--shuttle-hover-x', (x * 10).toFixed(1) + 'px');
+    set('--shuttle-hover-y', (-8 + y * 5).toFixed(1) + 'px');
+    set('--shuttle-hover-rotate', (x * 3.5).toFixed(2) + 'deg');
+  });
+
+  art.addEventListener('pointerleave', resetHover);
+  window.addEventListener('scroll', queueScroll, { passive: true });
+  window.addEventListener('resize', queueScroll, { passive: true });
+  if (motionQuery && motionQuery.addEventListener) motionQuery.addEventListener('change', queueScroll);
+  new MutationObserver(queueScroll).observe(root, { attributes: true, attributeFilter: ['data-a11y'] });
+  updateScroll();
 })();
 
 /* Starfield: two twinkling depth layers with diffraction sparkles, gentle
