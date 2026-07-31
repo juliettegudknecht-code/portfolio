@@ -12,18 +12,16 @@ og.jpg                              social share card
 assets/
   css/
     base.css                        fonts, color variables, resets, typography
-    components.css                  intro reel, hero, sections, folders, timeline, dark starfield theme
+    components.css                  hero, case studies, sections, folders, timeline, dark starfield theme
     responsive.css                  tablet and mobile adjustments (loads last)
   js/
-    main.js                         tabs, pencil case, career timeline, dialogs, scrollspy, music
+    main.js                         tabs, career timeline, dialogs, scrollspy, and music
     accessibility.js                accessibility panel, settings persisted to localStorage
-    animations.js                   scroll reveal, intro reel, star-cluster entrance, starfield
+    animations.js                   scroll reveal and starfield
   images/                           photos and the nebula background
   fonts/                            Atkinson Hyperlegible and Bricolage Grotesque (woff2)
   Juliette-Gudknecht-Resume.pdf     one-page resume served by the Export button
 ```
-
-The one script left inline in `index.html` is the intro gate. It decides before first paint whether the intro reel should play, so it cannot wait for an external file.
 
 ## Running locally
 

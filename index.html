@@ -188,19 +188,6 @@
   </defs>
 </svg>
 
-<script>
-(function () {
-  try {
-    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var a11y = {};
-    try { a11y = JSON.parse(localStorage.getItem('jg_a11y') || '{}') || {}; } catch (e) {}
-    if (!reduce && !a11y.motion) {
-      document.documentElement.classList.add('show-intro');
-    }
-  } catch (e) {}
-})();
-</script>
-
 <div id="intro" role="presentation">
   <svg class="intro-bg" viewBox="0 0 100 52" aria-hidden="true" focusable="false"><path d="M10 44 C 34 36 44 17 60 21 C 78 25.5 82 8 92 6" fill="none" stroke="url(#introGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
   <div class="intro-stage">
@@ -297,20 +284,11 @@
     </a>
     <div class="header-right">
       <nav class="site" aria-label="Site">
+        <a href="#featured-work">Work</a>
         <a href="#about">About</a>
-        <a href="#work">Journey</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#projects">Work</a>
-        <a href="#publications">Publications</a>
-        <a href="#honors">Awards</a>
-        <a href="#speaking">Speaking</a>
+        <a href="#publications">Research &amp; speaking</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="resume-btn" href="assets/Juliette-Gudknecht-Resume.pdf" download="Juliette-Gudknecht-Resume.pdf" aria-label="Export Juliette Gudknecht's resume as a PDF">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5 L12 15 M7.5 10.8 L12 15.3 L16.5 10.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.7 17.5 L4.7 19.6 C4.7 20.2 5.2 20.6 5.8 20.6 L18.2 20.6 C18.8 20.6 19.3 20.2 19.3 19.6 L19.3 17.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        Export resume
-      </a>
     </div>
   </div>
   <div class="scrollbar" aria-hidden="true"><span id="scrollFill"></span></div>
@@ -325,10 +303,10 @@
           <div class="print-name">Juliette Gudknecht</div>
           <svg class="hero-sig" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><path d="M7 33 C 11 30.5 13 29.5 15.5 28 C 18.5 26 21 24 23.5 22" fill="none" stroke="url(#dmg)" stroke-width="2.6" stroke-linecap="round"></path><circle cx="7" cy="33" r="2.7" fill="#ec5fa8"></circle><circle cx="15.5" cy="28" r="2.5" fill="#9b6bd8"></circle><g transform="translate(30 16) rotate(45)"><path d="M-1.4 5 C -1 8 1 8 1.4 5 Z" fill="#ec5fa8"></path><path d="M-3 1.6 L-5 5.6 L-2.8 4.7 Z M3 1.6 L5 5.6 L2.8 4.7 Z" fill="none" stroke="#e07aa9" stroke-width="1.6" stroke-linejoin="round"></path><path d="M0 -8 C 2.2 -6 3.2 -2 3 2.6 C 2.9 4 2 5 0 5 C -2 5 -2.9 4 -3 2.6 C -3.2 -2 -2.2 -6 0 -8 Z" fill="#1a2142" stroke="#24252b" stroke-width="1.8" stroke-linejoin="round"></path><circle cx="0" cy="-2" r="1.6" fill="none" stroke="#ab8df0" stroke-width="1.5"></circle></g></svg>
           <h1>Data that counts <em>everyone</em>.</h1>
-      <p class="lede">I'm a federal data scientist and published researcher. I make public data clear, accessible, and honest.</p>
-      <p class="byline">Federal data scientist and data steward · MS Applied Statistics, Columbia University</p>
+      <p class="lede">I&apos;m a federal data scientist and data steward working on IDEA Section 618, the 12 national data collections on infants, children, and students with disabilities.</p>
+      <p class="byline">U.S. Department of Education · MS Applied Statistics, Columbia University</p>
       <div class="actions">
-        <a class="btn primary" href="mailto:juliettegudknecht14@gmail.com">Get in touch</a>
+        <a class="btn primary" href="#featured-work">See my work</a>
         <a class="btn" href="https://www.linkedin.com/in/juliettegudknecht/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://scholar.google.com/citations?user=ddCdV7wAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
       </div>
@@ -347,14 +325,62 @@
     </div>
   </div>
 
+  <section id="featured-work" class="featured-work reveal">
+    <div class="wrap">
+      <div class="featured-heading">
+        <div>
+          <h2>A few things I&apos;ve worked on.</h2>
+        </div>
+        <p>My work ranges from federal data collection and quality review to dashboards, public reports, and research.</p>
+      </div>
+
+      <div class="case-grid">
+        <article class="case-study case-primary">
+          <div class="case-visual case-photo">
+            <img src="assets/images/juliette-gudknecht-outside-the-u-s-department-of.jpg" alt="Juliette Gudknecht outside the U.S. Department of Education" width="720" height="720">
+          </div>
+          <div class="case-copy">
+            <h3>Federal reporting and automation</h3>
+            <p>I lead the IDEA Discipline and Personnel collections, including their static tables, and work directly across four other Section 618 collections. A lot of my current work is about making federal reporting faster, more consistent, and easier to maintain.</p>
+            <ul class="case-highlights">
+              <li>Automating the Discipline and Personnel static tables in Python, from source files through validation, suppression review, and accessible output.</li>
+              <li>Calculated the IDEA GPRA performance measures used in the Department&apos;s Congressional Justification.</li>
+              <li>Built reusable quality checks and Section 508 reporting templates now used across OSEP.</li>
+            </ul>
+            <a class="case-link" href="https://data.ed.gov/dataset/idea-section-618-data-products-state-level-data-files" target="_blank" rel="noopener">See the public data files</a>
+          </div>
+        </article>
+
+        <article class="case-study">
+          <div class="case-visual report-visual">
+            <img src="assets/images/osep-fast-facts-official.png" alt="Official OSEP Fast Facts banner from the U.S. Department of Education" width="1024" height="191">
+          </div>
+          <div class="case-copy">
+            <h3 class="visually-hidden">OSEP Fast Facts</h3>
+            <p>I authored the four most recent OSEP Fast Facts releases. They take a focused question about IDEA data and explain it with accessible charts, short definitions, and enough context to read the numbers responsibly.</p>
+            <p>The releases include editions on IDEA&apos;s 50th anniversary, the Annual Report to Congress, and disability categories.</p>
+            <a class="case-link" href="https://sites.ed.gov/idea/osep-fast-facts/" target="_blank" rel="noopener">Read the Fast Facts</a>
+          </div>
+        </article>
+
+        <article class="case-study case-text-only">
+          <div class="case-copy">
+            <h3>IDEA 618 dashboard, in progress</h3>
+            <p>I am building a large dashboard from public IDEA Section 618 data. It is designed to bring the 12 collections into one place, with national, state, county, and district views instead of separate files and reports.</p>
+            <p>The current build includes 16,742 districts, NCES locale data, source notes, accessible reporting views, and tools for exploring changes over time.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section id="about" class="research reveal">
     <div class="wrap sec-grid">
       <h2 class="sec-label">About<svg class="doodle rail-spot rs-about c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-heart"></use></svg></h2>
       <div class="sec-body">
-      <h3>National data, made <mark>clear and usable for everyone</mark>.</h3>
-      <p>I'm a federal data scientist and data steward. At the U.S. Department of Education, I look after national Individuals with Disabilities Education Act (IDEA) Section 618 data: the figures every state reports each year on the students it serves in special education.</p>
-      <p class="complex-text">I run the Discipline and Personnel collections, co-produce the Office of Special Education Programs (OSEP) Fast Facts, serve on two federal data-governance boards, and build accessible, Section 508-compliant dashboards, increasingly powered by AI. I'm also a published researcher, with work in journals like <em>Autism</em> and <em>Exceptional Children</em>, and I founded and lead the Autism and Neurodivergency Advocacy Association. <span class="views-note">(Views my own, not my employer's.)</span></p>
-      <p class="plain-text">I collect this data, check that it is correct, help share it in easy-to-read public reports, and build tools that make it usable for everyone. I also do research and lead a nonprofit that supports neurodivergent people. <span class="views-note">(These views are my own.)</span></p>
+      <p>I like the parts of data work that are easy to overlook: definitions, validation checks, suppressed values, documentation, and accessibility. Those details determine whether a dataset can actually be trusted. I also like the point where the data leaves the spreadsheet and has to make sense to someone else.</p>
+      <p class="complex-text">I also published autism and education research and led the Autism and Neurodivergency Advocacy Association. Both shaped how I think about public data: every record represents a person, and clarity is part of doing the work well. <span class="views-note">(Views my own, not my employer's.)</span></p>
+      <p class="plain-text">I check public data carefully and explain it clearly. I also published autism and education research and led a nonprofit that supported neurodivergent people. <span class="views-note">(These views are my own.)</span></p>
       <div class="shots shots-one photo-in"><button class="shot photo photo-link" type="button" aria-label="View photo: At the U.S. Department of Education."><svg class="photo-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-camera"></use></svg><img src="assets/images/juliette-gudknecht-at-the-u-s-department-of-educ.jpg" alt="Juliette Gudknecht at the U.S. Department of Education seal." width="720" height="720"><span class="shot-cap">At the U.S. Department of Education.</span></button></div>
       </div>
     </div>
@@ -469,24 +495,24 @@
           <div class="years">Jan 2025 to present</div>
           <h3><svg class="doodle role-doodle c-berry" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-apple"></use></svg>Data Analyst (Education Program Specialist)</h3>
           <div class="org">U.S. Department of Education, Office of Special Education Programs</div>
-          <p class="desc">I serve as one of the key data stewards and subject-matter experts for Individuals with Disabilities Education Act (IDEA) Section 618 reporting: the federal data that every U.S. state submits each year on the infants, children, and students it serves in special education. My work spans six national data collections that shape how the country understands and funds services for students with disabilities.</p>
+          <p class="desc">I serve as one of the key data stewards and subject-matter experts for IDEA Section 618 reporting, which includes 12 national data collections on infants, children, and students with disabilities. I work directly across six of those collections.</p>
           <ul>
             <li>Run the <strong>IDEA Discipline (2023&ndash;24, 2024&ndash;25) and Personnel (2024&ndash;25) collections</strong> and their static tables end to end, from requirements through validation, suppression review, publication, and documentation. The Discipline data tracks how often students with disabilities are suspended, expelled, or removed from class, and the Personnel data counts the special-education teachers and staff who serve them. I published the 2023&ndash;24 Discipline data on ED&rsquo;s Open Data Platform.</li>
             <li>Represent the Office of Special Education Programs on <strong>two federal data-governance boards</strong>: the EDFacts Data Governance Board and the Office of Planning, Evaluation and Policy Development (OPEPD) Data Literacy Workgroup.</li>
             <li>Steward data that covers <strong>more than 8 million students with disabilities</strong>, from infants and toddlers under IDEA Part C to school-age students under Part B. It underpins the roughly <strong>$15 billion</strong> in federal formula funds that IDEA sends to states each year, so getting it right shapes how much support reaches classrooms.</li>
             <li>Co-author the <strong>four most recent OSEP Fast Facts releases</strong>, including the IDEA 50th anniversary edition, turning Section 618 data into accessible, Section 508-compliant data stories for the public.</li>
-            <li>Build a <strong>Python-backed analytics dashboard</strong> (a side project I finished in about a month) that automates the office&rsquo;s statutory public-reporting outputs and turns the 618 data into analysis and visualizations for leadership.</li>
+            <li>Build an <strong>in-progress IDEA 618 dashboard</strong> from public data, with national, state, county, and district views, 16,742 districts, NCES locale data, source notes, and accessible reporting tools.</li>
           </ul>
           <div class="plink">Project Officer for both national data centers: <a href="https://cifr.wested.org/partners/" target="_blank" rel="noopener">CIFR</a> and the <a href="https://www.weissta.org" target="_blank" rel="noopener">Weiss Center</a></div>
           <details>
             <summary>More highlights</summary>
             <ul>
-              <li>Support the wider set of <strong>six national collections</strong>, assisting regularly on the Assessment collection (state-test performance) and on Maintenance of Effort and Coordinated Early Intervening Services (MOE/CEIS), and having contributed to the Exiting, Child Count, and Educational Environments collections.</li>
+              <li>Work directly across <strong>six of the 12 national collections</strong>, regularly supporting Assessment and MOE and CEIS and contributing to Exiting, Child Count, and Educational Environments.</li>
               <li>Contributed data to and served on the team responsible for the <strong>IDEA Annual Report to Congress</strong>, the federal government's yearly report on the state of special education across the United States.</li>
-              <li>Built <strong>Python automation</strong> for data-quality checks and validation, plus reusable Section 508-compliant templates now used across the Office of Special Education Programs.</li>
+              <li>Built <strong>Python automation</strong> for the Discipline and Personnel static tables, data-quality checks, and validation, plus reusable Section 508-compliant templates now used across OSEP.</li>
               <li>Oversee <strong>15 grants worth more than $20M a year</strong>, including two national data centers: the Center for IDEA Fiscal Reporting as Co-Project Officer and the Weiss Center as Lead Project Officer, where I also review accessibility deliverables.</li>
               <li>Provide <strong>technical assistance to state data managers</strong> year-round through office hours and calls with the national TA centers (IDC and DaSy), including 15 state follow-up calls through collection close.</li>
-              <li>Calculated the <strong>IDEA GPRA performance measures</strong> for the Department&rsquo;s Congressional Justification, in AI-assisted Python.</li>
+              <li>Calculated the <strong>IDEA GPRA performance measures</strong> for the Department&rsquo;s Congressional Justification in Python.</li>
               <li>Co-delivered a keynote to <strong>1,200 people</strong> at the OSEP Leadership Conference, with additional talks at the DaSy Center and Center for IDEA Fiscal Reporting (CIFR).</li>
               <li>Member of the <strong>Federal Interagency Working Group on Autism (FIWA)</strong>, which coordinates autism research and services across United States agencies.</li>
             </ul>
@@ -576,55 +602,12 @@
     <div class="wrap sec-grid">
       <h2 class="sec-label">Skills<svg class="doodle rail-spot rs-skills c-blue" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-bulb"></use></svg></h2>
       <div class="sec-body">
-      <p class="section-note">My toolkit, by area. Pull a pencil out of the case to see what is inside.</p>
-        <div class="pencilcase">
-          <div class="pencils" role="tablist" aria-label="Skill areas">
-            <button class="pencil" role="tab" id="skt-1" aria-controls="sk-1" aria-selected="true" style="--pc:#b34576"><span class="pencil-name">Governance</span></button>
-            <button class="pencil" role="tab" id="skt-2" aria-controls="sk-2" aria-selected="false" tabindex="-1" style="--pc:#7a5fc0"><span class="pencil-name">Languages</span></button>
-            <button class="pencil" role="tab" id="skt-3" aria-controls="sk-3" aria-selected="false" tabindex="-1" style="--pc:#3f7ab0"><span class="pencil-name">AI &amp; GenAI</span></button>
-            <button class="pencil" role="tab" id="skt-4" aria-controls="sk-4" aria-selected="false" tabindex="-1" style="--pc:#d1568f"><span class="pencil-name">Machine learning</span></button>
-            <button class="pencil" role="tab" id="skt-5" aria-controls="sk-5" aria-selected="false" tabindex="-1" style="--pc:#5566c9"><span class="pencil-name">Platforms</span></button>
-            <button class="pencil" role="tab" id="skt-6" aria-controls="sk-6" aria-selected="false" tabindex="-1" style="--pc:#8f3a68"><span class="pencil-name">Web</span></button>
-            <button class="pencil" role="tab" id="skt-7" aria-controls="sk-7" aria-selected="false" tabindex="-1" style="--pc:#8455a0"><span class="pencil-name">Accessibility</span></button>
-            <button class="pencil" role="tab" id="skt-8" aria-controls="sk-8" aria-selected="false" tabindex="-1" style="--pc:#6b87d8"><span class="pencil-name">Research</span></button>
-          </div>
-          <div class="case" aria-hidden="true"><span class="zip"></span></div>
-        </div>
-        <div class="pencil-detail">
-          <div class="skpanel" role="tabpanel" id="sk-1" aria-labelledby="skt-1">
-              <h3>Data governance &amp; quality</h3>
-              <p>Data stewardship, data-quality validation, statistical suppression, collection documentation, data-governance board service, and data literacy.</p>
-          </div>
-          <div class="skpanel" role="tabpanel" id="sk-2" aria-labelledby="skt-2" hidden>
-              <h3>Languages &amp; query</h3>
-              <p>Python, R, SQL, SAS, SPSS, and Java.</p>
-              <small>Full professional: Python, R, SQL, SPSS, SAS &middot; Working knowledge: Java</small>
-          </div>
-          <div class="skpanel" role="tabpanel" id="sk-3" aria-labelledby="skt-3" hidden>
-              <h3>AI &amp; GenAI</h3>
-              <p>Generative AI (certified), Machine Learning with Python (certified), AI-assisted analytics, prompt engineering, and AI-assisted reporting workflows adopted across two divisions.</p>
-          </div>
-          <div class="skpanel" role="tabpanel" id="sk-4" aria-labelledby="skt-4" hidden>
-              <h3>Machine learning &amp; statistics</h3>
-              <p>Machine learning, predictive modeling, random forest, neural networks, time series and ARIMA, regression, and data automation.</p>
-          </div>
-          <div class="skpanel" role="tabpanel" id="sk-5" aria-labelledby="skt-5" hidden>
-              <h3>Platforms &amp; BI</h3>
-              <p>Power BI, Looker and Google Data Studio, and Excel.</p>
-          </div>
-          <div class="skpanel" role="tabpanel" id="sk-6" aria-labelledby="skt-6" hidden>
-              <h3>Web &amp; dashboards</h3>
-              <p>HTML, CSS, and JavaScript.</p>
-              <small>Hand-built, single-file websites and Section 508-accessible interactive dashboards</small>
-          </div>
-          <div class="skpanel" role="tabpanel" id="sk-7" aria-labelledby="skt-7" hidden>
-              <h3>UX &amp; accessibility</h3>
-              <p>Section 508 accessibility, accessible dashboards, data visualization, and data storytelling.</p>
-          </div>
-          <div class="skpanel" role="tabpanel" id="sk-8" aria-labelledby="skt-8" hidden>
-              <h3>Research methods</h3>
-              <p>Quantitative and qualitative research, latent class analysis, content analysis, and data analysis.</p>
-          </div>
+        <p class="section-note">The tools and methods I use most often.</p>
+        <div class="capability-grid">
+          <article><h3>Governance &amp; quality</h3><p>Data stewardship, validation, statistical suppression, documentation, governance boards, and data literacy.</p></article>
+          <article><h3>Analysis &amp; automation</h3><p>Python, R, SQL, SAS, SPSS, regression, time series, machine learning, and repeatable quality-control workflows.</p></article>
+          <article><h3>Reporting &amp; BI</h3><p>Power BI, Looker, Excel, accessible dashboards, data visualization, and plain-language data storytelling.</p></article>
+          <article><h3>Accessible delivery</h3><p>Section 508 implementation, HTML, CSS, JavaScript, usability, and accessible public-facing reports.</p></article>
         </div>
       </div>
     </div>
@@ -677,7 +660,7 @@
 
   <section id="projects" class="reveal">
     <div class="wrap sec-grid">
-      <h2 class="sec-label">Selected work<svg class="doodle rail-spot rs-projects c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-planet"></use></svg></h2>
+      <h2 class="sec-label">More selected work<svg class="doodle rail-spot rs-projects c-violet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-planet"></use></svg></h2>
       <div class="sec-body">
         <div class="folder">
           <div class="folder-tabs" role="tablist" aria-label="Project folders">
@@ -722,9 +705,9 @@
         <div class="project">
         <span class="pv pv-berry" aria-hidden="true"><svg class="doodle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-chart"></use></svg></span>
         <div class="pbody">
-          <h3>IDEA Data Dashboard &amp; Data Storytelling</h3>
-          <div class="org">Built on public IDEA Section 618 data</div>
-          <p>Built an interactive dashboard and a scrollytelling site that turn public IDEA Section 618 data into easy national and state views, with plain-language guides, drill-down popups, a build-your-own-chart tool, and a built-in chatbot that answers questions about the data in plain language.</p>
+          <h3>IDEA 618 Dashboard</h3>
+          <div class="org">Personal project built on public IDEA Section 618 data &middot; in progress</div>
+          <p>Building a large dashboard that brings the 12 IDEA collections into national, state, county, and district views, with 16,742 districts, NCES locale data, source notes, accessible reporting, and tools for exploring change over time.</p>
         </div>
       </div>
 
@@ -1047,8 +1030,7 @@
           <path d="M110 25 L144 8 L127 34 L121 24 Z M144 8 L121 24" fill="none" stroke="#3f7ab0" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"></path>
         </svg>
         <svg class="contact-planet" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#d-planet"></use></svg>
-        <h3>Want to work together?</h3>
-        <p>I take on the occasional side project or speaking engagement when it stays clear of my federal ethics rules, and I am open to the right new role. If you are working on something in data, machine learning, AI, or accessible technology, or would like me to speak, send me a note.</p>
+        <p>I welcome conversations with federal data peers, public-sector reporting teams, research collaborators, and speaking organizers. I also take on the occasional side project when it stays clear of my federal ethics rules.</p>
         <div class="actions">
           <a class="btn primary" href="mailto:juliettegudknecht14@gmail.com">Email me</a>
           <a class="btn" href="https://www.linkedin.com/in/juliettegudknecht/" target="_blank" rel="noopener">LinkedIn</a>
@@ -1080,8 +1062,8 @@
     <circle cx="12" cy="11" r="2.1" fill="none" stroke="#ab8df0" stroke-width="1.8"></circle>
   </svg>
 </button>
-<button class="music-btn" id="musicBtn" type="button" aria-pressed="false" aria-label="Play music" title="Music">
-  <svg class="m-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg>
+<button class="music-btn" id="musicBtn" type="button" aria-pressed="false" aria-label="Play A Sky Full of Stars" title="A Sky Full of Stars">
+  <svg class="m-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l10-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="16" cy="16" r="3"></circle></svg>
   <span class="meq" aria-hidden="true"><i></i><i></i><i></i></span>
 </button>
 <button class="a11y-fab" id="a11yFab" aria-expanded="false" aria-controls="a11yPanel">

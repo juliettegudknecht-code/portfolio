@@ -241,49 +241,86 @@ var ddDialog = document.getElementById('ddDialog');
   }
 })();
 
-/* Music: hidden YouTube player, toggled by the button above the rocket.
-   Starts on click (browsers require a gesture) and fades out on pause. */
+/* A Sky Full of Stars. Playback starts only after a visitor clicks. */
 (function () {
   var btn = document.getElementById('musicBtn');
   if (!btn) return;
   var player = null, ready = false, want = false, fade = null, on = false;
-  function make() {
+
+  function makePlayer() {
     if (player) return;
     if (!document.getElementById('ytm')) {
-      var h = document.createElement('div'); h.id = 'ytm';
-      h.style.cssText = 'position:fixed;left:-9999px;width:0;height:0;overflow:hidden;';
-      document.body.appendChild(h);
+      var host = document.createElement('div');
+      host.id = 'ytm';
+      host.style.cssText = 'position:fixed;left:-9999px;width:0;height:0;overflow:hidden;';
+      document.body.appendChild(host);
     }
-    player = new YT.Player('ytm', { height: '0', width: '0', videoId: 'zp7NtW_hKJI',
+    player = new YT.Player('ytm', {
+      height: '0',
+      width: '0',
+      videoId: 'zp7NtW_hKJI',
       playerVars: { autoplay: 0, controls: 0, playsinline: 1, rel: 0, loop: 1, playlist: 'zp7NtW_hKJI' },
-      events: { onReady: function () { ready = true; if (want) play(); } } });
+      events: { onReady: function () { ready = true; if (want) play(); } }
+    });
   }
-  function ensure() {
-    if (window.YT && window.YT.Player) { make(); return; }
-    var prev = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = function () { if (prev) prev(); make(); };
+
+  function ensurePlayer() {
+    if (window.YT && window.YT.Player) { makePlayer(); return; }
+    var previousReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function () {
+      if (previousReady) previousReady();
+      makePlayer();
+    };
     if (!document.getElementById('ytapi')) {
-      var s = document.createElement('script'); s.id = 'ytapi';
-      s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s);
+      var script = document.createElement('script');
+      script.id = 'ytapi';
+      script.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(script);
     }
   }
-  function play() { try { if (fade) { clearInterval(fade); fade = null; } player.setVolume(60); player.unMute(); player.playVideo(); } catch (e) {} }
+
+  function play() {
+    try {
+      if (fade) { clearInterval(fade); fade = null; }
+      player.setVolume(60);
+      player.unMute();
+      player.playVideo();
+    } catch (e) {}
+  }
+
   btn.addEventListener('click', function () {
     on = !on;
     btn.classList.toggle('playing', on);
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    btn.setAttribute('aria-label', on ? 'Pause music' : 'Play music');
-    if (on) { want = true; ensure(); if (ready) play(); }
-    else {
-      want = false;
-      try {
-        if (player && ready) {
-          var v = 60; if (fade) clearInterval(fade);
-          fade = setInterval(function () { v -= 7;
-            try { if (v > 0) { player.setVolume(v); } else { clearInterval(fade); fade = null; player.pauseVideo(); player.setVolume(60); } }
-            catch (e) { clearInterval(fade); fade = null; } }, 80);
-        }
-      } catch (e) {}
+    btn.setAttribute('aria-label', on ? 'Pause A Sky Full of Stars' : 'Play A Sky Full of Stars');
+    if (on) {
+      want = true;
+      ensurePlayer();
+      if (ready) play();
+      return;
     }
+
+    want = false;
+    try {
+      if (player && ready) {
+        var volume = 60;
+        if (fade) clearInterval(fade);
+        fade = setInterval(function () {
+          volume -= 7;
+          try {
+            if (volume > 0) player.setVolume(volume);
+            else {
+              clearInterval(fade);
+              fade = null;
+              player.pauseVideo();
+              player.setVolume(60);
+            }
+          } catch (e) {
+            clearInterval(fade);
+            fade = null;
+          }
+        }, 80);
+      }
+    } catch (e) {}
   });
 })();

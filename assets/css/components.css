@@ -100,15 +100,6 @@ nav.site { display: flex; flex-wrap: wrap; gap: 4px 26px; font-size: 14px; font-
 nav.site a { color: var(--muted); }
 nav.site a:hover { color: var(--ink); text-decoration: none; }
 .header-right { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-.resume-btn {
-  display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
-  font-family: var(--body); font-size: 13.5px; font-weight: 700;
-  padding: 8px 15px; border-radius: 8px; background: var(--pink); color: #fff;
-  text-decoration: none; touch-action: manipulation; transition: background 0.15s;
-}
-.resume-btn:hover { background: var(--pink-deep); text-decoration: none; color: #fff; }
-.resume-btn svg { width: 16px; height: 16px; }
-
 /* Hero */
 .hero { padding: 76px 0 0; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 64px; align-items: center; }
@@ -303,7 +294,7 @@ dialog.shotbox .close {
   .tl-pane[hidden] { display: block !important; }
   .tl-pane { margin-bottom: 14px; border-top: 1px solid #ddd; padding-top: 10px; }
   header, .a11y-fab, .a11y-panel, #intro, .skip-link, .hero-sig, .rail-spot, .space-dust,
-  .paperclip, .plane, .contact-planet, .folder-tabs, .foot-thanks, .scrollbar, .invite, .shots, .readmore, .skillfold summary, .playmark, .resume-btn, .dash-view, .to-top { display: none !important; }
+  .paperclip, .plane, .contact-planet, .folder-tabs, .foot-thanks, .scrollbar, .invite, .shots, .readmore, .skillfold summary, .playmark, .dash-view, .to-top { display: none !important; }
   html.js .reveal { opacity: 1 !important; transform: none !important; }
   .fpanel, .fpanel[hidden] { display: block !important; }
   body { background: #fff; }
@@ -321,8 +312,6 @@ dialog.shotbox .close {
 .section-note { margin: 0 0 26px; font-size: 15.5px; color: var(--muted); max-width: 620px; }
 
 /* About */
-.research h3 { margin: 0 0 18px; font-family: var(--hand); font-size: clamp(26px, 2.8vw, 33px); line-height: 1.22; font-weight: 600; letter-spacing: -0.015em; max-width: 680px; }
-.research h3 mark { background: linear-gradient(to top, #f7ddeb 45%, transparent 45%); color: inherit; padding: 0 2px; }
 .research p { margin: 0 0 14px; color: var(--muted); max-width: 660px; }
 .research p strong { color: var(--ink); }
 .views-note { font-size: 13px; color: var(--faint); }
@@ -562,7 +551,7 @@ dialog.vidbox .close:hover { background: rgba(24, 20, 24, 0.92); }
 @keyframes fly { to { stroke-dashoffset: -220; } }
 .contact-planet { position: absolute; right: 26px; top: 118px; width: 120px; height: 120px; color: #8f9df0; opacity: 0.15; transform: rotate(-8deg); pointer-events: none; }
 .contact-box h3 { margin: 0; font-family: var(--hand); font-size: clamp(32px, 4.2vw, 50px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.06; max-width: 720px; }
-.contact-box p { margin: 18px 0 0; color: var(--muted); max-width: 620px; }
+.contact-box p { margin: 0; color: var(--muted); max-width: 620px; }
 
 footer { border-top: 1px solid var(--pink-soft); padding: 24px 0 110px; }
 .footer-inner { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: space-between; font-size: 13px; color: var(--faint); }
@@ -674,7 +663,7 @@ dialog.shotbox .close, dialog.privacy .close { background: var(--card); }
 .btn, .to-top, .a11y-fab, .intro-skip { border-color: var(--border); }
 .btn:hover, .to-top:hover, .intro-skip:hover { border-color: var(--ink); }
 .btn.primary { background: var(--pink); border-color: var(--pink); }
-.btn.primary:hover, .resume-btn:hover { background: #a84470; border-color: #a84470; }
+.btn.primary:hover { background: #a84470; border-color: #a84470; }
 .to-top, .a11y-fab { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55); }
 .a11y-panel { box-shadow: 0 10px 34px rgba(0, 0, 0, 0.6); }
 .a11y-knob { background: #3a4258; }
@@ -685,7 +674,6 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
 .stat:nth-child(2) b, .c-violet { color: #ab8df0; }
 .stat:nth-child(3) b, .c-blue { color: #77aede; }
 .stat:nth-child(4) b, .c-amber { color: #dca757; }
-.research h3 mark { background: linear-gradient(to top, rgba(224, 122, 169, 0.28) 45%, transparent 45%); }
 
 /* project folders as night files */
 .ftab { background: var(--card2); border-color: #2c3654; }
@@ -763,19 +751,52 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
 /* no squiggly watermark behind the intro */
 .intro-bg { display: none !important; }
 
-/* music button, stacked above the rocket */
+}
+
+/* Featured federal data work */
+.featured-work { padding-top: 92px; }
+.featured-heading { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr); gap: 48px; align-items: end; }
+.featured-heading h2 { margin: 0; max-width: 720px; font-family: var(--hand); font-size: clamp(34px, 4.7vw, 58px); line-height: 1.02; letter-spacing: -0.035em; }
+.featured-heading > p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.6; }
+.case-grid { margin-top: 34px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.case-study { overflow: hidden; border: 1px solid var(--border); border-radius: 16px; background: rgba(15, 19, 40, 0.86); box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18); }
+.case-study.case-primary { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr); }
+.case-visual { position: relative; min-height: 250px; overflow: hidden; background: #191d3c; }
+.case-primary .case-visual { min-height: 430px; }
+.case-photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.report-visual { display: grid; place-items: center; padding: 28px; background: #f4e84d; }
+.report-visual img { width: 100%; height: auto; display: block; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2); }
+.case-text-only { display: flex; align-items: center; min-height: 100%; }
+.case-text-only .case-copy { padding: 36px; }
+.case-copy { padding: 28px; }
+.case-primary .case-copy { padding: 42px; align-self: center; }
+.case-copy h3 { margin: 0; font-family: var(--hand); font-size: clamp(23px, 2.4vw, 31px); line-height: 1.12; letter-spacing: -0.02em; }
+.case-copy > p { margin: 14px 0 0; color: var(--muted); font-size: 14.5px; }
+.case-highlights { margin: 20px 0 0; padding-left: 20px; color: var(--muted); }
+.case-highlights li { margin: 9px 0; font-size: 14px; line-height: 1.5; }
+.case-highlights li::marker { color: var(--pink-deep); }
+.case-link { display: inline-block; margin-top: 22px; font-weight: 700; font-size: 14px; }
+.case-link::after { content: ' \2197'; }
+.visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important; border: 0 !important; }
+
+/* A Sky Full of Stars, played only after a visitor clicks */
 .music-btn { position: fixed; left: 18px; bottom: 74px; z-index: 90; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--border); background: var(--card); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55); touch-action: manipulation; }
 .music-btn:hover { border-color: var(--pink); }
 .music-btn svg { width: 20px; height: 20px; }
 .music-btn .meq { display: none; align-items: flex-end; gap: 2.5px; height: 16px; }
-.music-btn .meq i { width: 3px; background: var(--pink-deep); height: 40%; border-radius: 1px; animation: meqB 0.9s ease-in-out infinite; }
+.music-btn .meq i { width: 3px; height: 40%; border-radius: 1px; background: var(--pink-deep); animation: meqB 0.9s ease-in-out infinite; }
 .music-btn .meq i:nth-child(2) { animation-delay: 0.28s; }
 .music-btn .meq i:nth-child(3) { animation-delay: 0.52s; }
-@keyframes meqB { 0%, 100% { height: 30%; } 50% { height: 100%; } }
 .music-btn.playing .m-note { display: none; }
 .music-btn.playing .meq { display: flex; }
-}
+@keyframes meqB { 0%, 100% { height: 30%; } 50% { height: 100%; } }
 @media print { .music-btn { display: none !important; } }
+
+/* Capabilities without an interaction gate */
+.capability-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.capability-grid article { padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: rgba(17, 21, 43, 0.58); }
+.capability-grid h3 { margin: 0; font-family: var(--hand); font-size: 18px; }
+.capability-grid p { margin: 8px 0 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
 
 /* ===== Nebula atmosphere ===== */
 

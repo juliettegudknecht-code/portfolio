@@ -13,6 +13,10 @@
   .talk.featured { grid-template-columns: 1fr; gap: 0; }
   .talk.featured .talk-title { margin-top: 14px; }
   .talk.featured .talk-desc { max-width: 660px; }
+  .featured-heading { grid-template-columns: 1fr; gap: 18px; }
+  .featured-heading > p { max-width: 680px; }
+  .case-study.case-primary { grid-template-columns: 1fr; }
+  .case-primary .case-visual { min-height: 360px; }
 }
 @media (max-width: 720px) {
   .hero { padding: 52px 0 0; }
@@ -53,6 +57,12 @@
   .ftab[aria-selected="true"] { padding-bottom: 12px; }
   .space-dust { display: none; }
   .contact { padding-bottom: 72px; }
+  .featured-work { padding-top: 70px; }
+  .case-grid { grid-template-columns: 1fr; }
+  .case-study.case-primary { grid-column: auto; }
+  .case-primary .case-visual, .case-visual { min-height: 280px; }
+  .case-primary .case-copy, .case-copy { padding: 24px; }
+  .capability-grid { grid-template-columns: 1fr; }
 }
 
 /* ===== Mobile pass ===== */
@@ -64,7 +74,6 @@
   .brand { font-size: 16px; }
   .header-right { gap: 10px; }
   nav.site { font-size: 13px; gap: 2px 15px; }
-  .resume-btn { font-size: 13px; padding: 7px 12px; }
   .music-btn { width: 40px; height: 40px; bottom: 64px; left: 14px; }
   .music-btn svg { width: 18px; height: 18px; }
   .to-top { width: 40px; height: 40px; left: 14px; bottom: 14px; }
