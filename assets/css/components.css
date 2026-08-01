@@ -773,9 +773,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
 .case-primary:hover .case-photo img { transform: scale(1.045); }
 .case-primary:hover .case-photo img { filter: saturate(1) contrast(1.02); }
 .case-visual-title { position: absolute; z-index: 8; left: 22px; bottom: 24px; width: max-content; max-width: calc(100% - 44px); margin: 0; padding: 10px 15px 11px; border: 1px solid rgba(239, 154, 196, 0.72); border-bottom-width: 4px; background: rgba(8, 11, 25, 0.88); color: #fff; box-shadow: 7px 7px 0 rgba(69, 54, 111, 0.42); font-family: var(--hand); font-size: clamp(19px, 2.4vw, 29px); line-height: 1.08; text-align: left; transform: rotate(-0.7deg); transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); pointer-events: none; }
-.case-dashboard .case-visual-title { left: auto; right: 20px; top: 18px; bottom: auto; max-width: calc(100% - 96px); text-align: right; transform: rotate(0.7deg); }
 .case-primary:hover .case-visual-title { color: #ef9ac4; border-color: #ef9ac4; transform: rotate(0deg) translateX(3px); }
-.case-dashboard:hover .case-visual-title { color: #ef9ac4; border-color: #ef9ac4; transform: rotate(0deg) translateX(-3px); }
 .case-fastfacts { display: flex; align-items: center; min-height: 320px; overflow: hidden; border-top: 1px solid rgba(70, 83, 129, 0.8); border-bottom: 1px solid rgba(70, 83, 129, 0.8); }
 .case-fastfacts::after { content: ''; position: absolute; right: -82px; bottom: -96px; width: 230px; height: 230px; border: 1px solid rgba(239, 154, 196, 0.28); border-radius: 50%; box-shadow: 0 0 0 28px rgba(143, 157, 240, 0.04), 0 0 0 62px rgba(119, 174, 222, 0.025); }
 .case-fastfacts .case-copy { padding: 38px 14px; }
@@ -784,6 +782,7 @@ dialog.shotbox::backdrop, dialog.privacy::backdrop { background: rgba(4, 6, 14, 
 .case-text-only .case-copy { padding: 36px; }
 .case-dashboard { display: flex; flex-direction: column; min-height: 100%; }
 .case-dashboard .case-copy { flex: 1; }
+.case-dashboard-title { max-width: 520px; margin: 0 0 18px; color: #fff; font-family: var(--hand); font-size: clamp(24px, 3.2vw, 38px); line-height: 1.05; letter-spacing: -0.035em; }
 .idea-constellation { position: relative; min-height: 320px; overflow: hidden; border: 1px solid rgba(70, 83, 129, 0.8); clip-path: polygon(3% 0, 100% 4%, 97% 100%, 0 96%); background: radial-gradient(circle at 48% 46%, rgba(92, 75, 155, 0.18), transparent 42%), linear-gradient(160deg, #0c1022, #151a37); }
 .constellation-lines { position: absolute; inset: 16px 12px 28px; width: calc(100% - 24px); height: calc(100% - 44px); }
 .constellation-lines path { fill: none; stroke: rgba(143, 157, 240, 0.34); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 3 6; }
